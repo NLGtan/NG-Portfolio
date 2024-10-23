@@ -75,7 +75,7 @@ export const Home = () => {
       <div id="Home" className="absolute top-0"></div>
       {/* Text Animation */}
       <motion.div
-        className='hero absolute bottom-[450px] left-[150px]'
+        className='hero absolute bottom-[400px] left-[150px]'
         animate={controlsText}
         initial={{ x: -200, opacity: 0 }} // Start off-screen with opacity 0
       >
@@ -113,7 +113,7 @@ export const Home = () => {
       {/* Image Pop-Out Effect */}
       <motion.img
         src={pic}
-        className="img1 ml-[1150px] mt-[200px] z-10 w-[400px] h-[400px] animate-levitate2"
+        className="img1 ml-[1000px] mt-[150px] z-10 w-[400px] h-[400px] animate-levitate2"
         alt=""
         animate={controlsImage}
         initial={{ x: 200, opacity: 0 }} // Start off-screen to the right

@@ -8,7 +8,7 @@
 
 .blob {
     position: absolute;
-    bottom: 150px;
+    bottom: 100px;
     right: 0px;
     z-index: -1;
     background-image: linear-gradient(to bottom right, rgba(237, 115, 143, 1), rgba(171, 69, 202, 1));
