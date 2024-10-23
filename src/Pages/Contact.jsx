@@ -30,10 +30,10 @@ export class Contact extends Component {
         const { isInView } = this.state;
 
         return (
-            <section id="Contact" ref={this.contactRef} className="contact-page absolute top-[4800px] w-[100%]">
+            <section id="Contact" ref={this.contactRef} className="con-page absolute top-[4800px] w-[100%]">
                 {/* Animated Heading */}
                 <motion.h1
-                    className="font-sat font-thin text-9xl text-center pt-1 mb-[110px] mt-[50px]"
+                    className="con-int font-sat font-thin text-9xl text-center pt-1 mb-[110px] mt-[50px]"
                     initial={{ opacity: 0, y: 100 }} 
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }} 
                     transition={{ duration: 1, ease: "easeInOut" }}
@@ -43,7 +43,7 @@ export class Contact extends Component {
 
                 <div className="contact1 ml-[200px] pt-[50px] w-[900px]">
                     <motion.h2
-                        className="font-sat font-black text-[32px] md:text-[48px]"
+                        className="con-par1 font-sat font-black text-[32px] md:text-[48px]"
                         initial={{ opacity: 0, y: 50 }} 
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} 
                         transition={{ duration: 1.5, ease: "easeInOut", delay: 0.1 }}
@@ -51,7 +51,7 @@ export class Contact extends Component {
                         Have an <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">awesome</span> idea?
                     </motion.h2>
                     <motion.h2
-                        className="font-sat font-black text-[32px] md:text-[48px]"
+                        className="con-par1 font-sat font-black text-[32px] md:text-[48px]"
                         initial={{ opacity: 0, y: 50 }} 
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} 
                         transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
@@ -59,7 +59,7 @@ export class Contact extends Component {
                         Let’s bring it to <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">life</span>.
                     </motion.h2>
                     <motion.p
-                        className="font-sat font-medium text-[16px] md:text-[20px] w-full md:w-[500px] text-gray-400 mt-4"
+                        className="con-par2 font-sat font-medium text-[16px] md:text-[20px] w-full md:w-[500px] text-gray-400 mt-4"
                         initial={{ opacity: 0, y: 50 }} 
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} 
                         transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
@@ -68,7 +68,7 @@ export class Contact extends Component {
                     </motion.p>
 
                     <div className="contact-form mt-8 space-y-6 w-[400px]">
-                        <div className="w-[700px]">
+                        <div className="con-size w-[700px]">
                             <motion.div
                                 className="flex row-span-2"
                                 initial={{ opacity: 0, y: 50 }} 

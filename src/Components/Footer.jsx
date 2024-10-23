@@ -42,8 +42,8 @@ export class Footer extends Component {
                     transition={{ duration: 1.5, ease: "easeInOut" }}
                 >
                     <div className="con-deets">
-                        <h3 className="font-black text-[28px] pb-2">Contact Details</h3>
-                        <div className="flex flex-col space-y-1">
+                        <h3 className="con-sub-title font-black text-[28px] pb-2">Contact Details</h3>
+                        <div className="con-cont flex flex-col space-y-1">
                             <span className="relative group">
                                 <span>gaborne.neithanlouisn@gmail</span>
                                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-[210px]"></span>
@@ -56,8 +56,8 @@ export class Footer extends Component {
                     </div>
 
                     <div className="soc-med">
-                        <h3 className="font-black text-[28px] pb-2">My Digital Space</h3>
-                        <div className="flex flex-col space-y-4">
+                        <h3 className="con-sub-title font-black text-[28px] pb-2">My Digital Space</h3>
+                        <div className="con-cont flex flex-col space-y-4">
                             <div className="flex items-center space-x-2">
                                 <Git className="w-[25px] h-[25px]" />
                                 <span className="relative group">
@@ -85,8 +85,8 @@ export class Footer extends Component {
                     </div>
 
                     <div className="loc">
-                        <h3 className="font-black text-[28px] pb-2">Location</h3>
-                        <div className="flex flex-col space-y-4">
+                        <h3 className="con-sub-title font-black text-[28px] pb-2">Location</h3>
+                        <div className="con-cont flex flex-col space-y-4">
                             <span className="relative group">
                                 <span>Iloilo, Philippines</span>
                                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-[120px]"></span>
@@ -100,8 +100,8 @@ export class Footer extends Component {
                     </div>
                 </motion.div>
 
-                <div className="bottom-0 left-0 w-full flex flex-row items-center pt-10 p-4 bg-white">
-                    <p className="font-sat font-medium ml-10">©2024 <span className="font-black">NEITHAN LOUIS GABORNE</span></p>
+                <div className="foot bottom-0 left-0 w-full flex flex-row items-center pt-10 p-4 bg-white">
+                    <p className="foot1 font-sat font-medium ml-10">©2024 <span className="font-black">NEITHAN LOUIS GABORNE</span></p>
                     
                     <Link
                         to="Home"
@@ -109,7 +109,7 @@ export class Footer extends Component {
                         smooth={true}
                         offset={-70}
                         duration={500}
-                        className="font-pop font-black flex flex-row space-x-1 ml-auto items-end cursor-pointer"
+                        className="foot2 font-pop font-black flex flex-row space-x-1 ml-auto items-end cursor-pointer"
                     >
                         BACK TO TOP
                         <img src={arrow} alt="Arrow Up" className="self-end pr-10 pl-2" />

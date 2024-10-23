@@ -36,7 +36,7 @@ export class Projects extends Component {
 
                 {/* Animated Heading */}
                 <motion.h1
-                    className="font-sat font-thin text-9xl text-center text-white pt-20 mb-40"
+                    className="proj-int font-sat font-thin text-9xl text-center text-white pt-20 mb-40"
                     initial={{ opacity: 0, y: 100 }} 
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }} 
                     transition={{ duration: 1, ease: "easeInOut" }}
