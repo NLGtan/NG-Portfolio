@@ -425,38 +425,40 @@
 
 @media (max-width: 360px) {
     .hero1 {
-        margin-left: -80px;
+        margin-left: -100px;
+        margin-top: 130px;
         width: 300px;
     }
     .hero2 {
-        margin-left: -80px;   
+        margin-left: -100px;   
+        margin-top: 130px;
         width: 300px;  
     }
     .hero3 {
         margin-left: -60px; 
-        margin-top: 20px;
+        margin-top: 150px;
     }
     .skill-int {
         font-size: 60px;
     }
     .skillpar2 {
-        margin-left: 0px;
+        margin-left: -20px;
         width: 300px;
     }
     .flow {
         margin-left: 30px;
-        width: 390px;
+        width: 300px;
         text-align: left;
         font-size: 30px;
     }
     .skillpar1 {
-        margin-left: -100px;
+        margin-left: -130px;
         font-size: 30px;
         width: 200px;
     }
     .skillpar-1 {
-        width: 340px;
-        margin-left: -100px;
+        width: 320px;
+        margin-left: -130px;
         font-size: 12px;
     }
     .skillpar2 {
@@ -477,49 +479,60 @@
     }
     .tool-list{
         margin-left: 10px;
-        width: 380px;
+        width: 300px;
     }
     .icon {
-        font-size: 20px;
+        font-size: 14px;
     }
     .logos {
-        width: 40px;
+        width: 30px;
     }
     .proj1 {
-        margin-left: 20px;
+        margin-left: 0px;
         margin-bottom: 100px;
     }
     .container1 {
-        width: 380px;
+        width: 320px;
         height: 200px;
     }
     .proj2{
-        margin-left: 20px;
-        margin-bottom: 600px;
+        margin-left: 0px;
+        margin-bottom: 500px;
     }
     .container2{
-        width: 380px;
+        width: 320px;
         height: 200px;
     }
     .proj3{
-        width: 400px;
-        margin-right: -55px;
-        margin-top: 30px;
+        width: 300px;
+        margin-right: -20px;
+        margin-top: -160px;
     }
     .proj-layout {
         position: absolute;
         top: 2200px;
     }
     .container3{
-        width: 380px;
+        width: 320px;
         height: 200px;
     }
     .proj-int {
+        margin-bottom: 50px;
         font-size: 60px;
+    }
+    .sub1 {
+        font-size: 10px;
+    }
+    .sub2 {
+        font-size: 22px;
+    }
+    .sub3 {
+        width: 300px;
+        font-size: 20px;
     }
     .con-page {
         position: absolute;
-        top: 3950px;
+        top: 3550px;
     }
     .con-int {
         font-size: 50px;
@@ -527,7 +540,7 @@
     }
     .contact1 {
         width: 300px;
-        margin-left: 60px;
+        margin-left: 20px;
     }
     .con-par1 {
         font-size: 24px;
@@ -548,7 +561,7 @@
     .con-deets {
         position: absolute;  
         top: 600px;
-        left: -90px;
+        left: -40px;
     }
     .soc-med {
         position: absolute;
@@ -558,11 +571,11 @@
     }
     .loc {
         position: absolute;
-        top: 640px;
-        left: -90px;
+        top: 600px;
+        left: -40px;
     }
     .con-sub-title {
-        font-size: 20px;
+        font-size: 15px;
     }
     .con-cont {
         font-size: 12px;
@@ -571,13 +584,17 @@
         font-size: 12px;
     }
     .foot1 {
-        font-size: 10px;
-        width: 500px;
+        font-size: 6px;
+        width: 400px;
         margin-left: 0;
     }
     .foot2 {
-        font-size: 10px;
-        width: 150px;
-
+        position: absolute;
+        font-size: 8px;
+        left: 260px;
+        width: 100px;
+    }
+    .arr-img {
+        width: 100px;
     }
 }

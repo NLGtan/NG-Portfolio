@@ -109,7 +109,7 @@ export class Footer extends Component {
                         className="foot2 font-pop font-black flex flex-row space-x-1 ml-auto items-end cursor-pointer"
                     >
                         BACK TO TOP
-                        <img src={arrow} alt="Arrow Up" className="self-end pr-10 pl-2" />
+                        <img src={arrow} alt="Arrow Up" className="arr-img self-end pr-10 pl-2" />
                     </Link>
                 </div>
             </section>

@@ -58,11 +58,11 @@ export class Projects extends Component {
                         </div>
                     </a>
                     <p className="flex row-span-2 mb-1">
-                        <span className="border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
-                        <span className="border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
+                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
+                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
                     </p>
-                    <p className="font-medium text-[30px]">Zentry</p>
-                    <p className="font-medium text-[#CFCFCF] text-[24px]">Web Design • Frontend Development</p>
+                    <p className="sub2 font-medium text-[30px]">Zentry</p>
+                    <p className="sub3 font-medium text-[#CFCFCF] text-[24px]">Web Design • Frontend Development</p>
                 </div>
 
                 {/* Project 2 */}
@@ -79,11 +79,11 @@ export class Projects extends Component {
                         </div>
                     </a>
                     <p className="flex row-span-2 mb-1">
-                        <span className="border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
-                        <span className="border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
+                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
+                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
                     </p>
-                    <p className="font-medium text-[30px]">Bucket List Checker</p>
-                    <p className="font-medium text-[#CFCFCF] text-[24px]">Web Design • Fullstack Development</p>
+                    <p className="sub2 font-medium text-[30px]">Bucket List Checker</p>
+                    <p className="sub3 font-medium text-[#CFCFCF] text-[24px]">Web Design • Fullstack Development</p>
                 </div>
 
                 {/* Project 3 */}
@@ -100,11 +100,11 @@ export class Projects extends Component {
                         </div>
                     </a>
                     <p className="flex row-span-2 mb-1">
-                        <span className="border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
-                        <span className="border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
+                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
+                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
                     </p>
-                    <p className="font-medium text-[30px] text-white">PIXLSPACE</p>
-                    <p className="font-medium text-[#CFCFCF] text-[24px]">Web Design • Fullstack Development</p>
+                    <p className="sub2 font-medium text-[30px] text-white">PIXLSPACE</p>
+                    <p className="sub3 font-medium text-[#CFCFCF] text-[24px]">Web Design • Fullstack Development</p>
                 </div>
             </section>
         );
