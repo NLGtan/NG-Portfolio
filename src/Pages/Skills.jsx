@@ -172,18 +172,13 @@ export class Skills extends Component {
             </ul>
           </div>
 
-                    <motion.img
-                        src={img2}
-                        className="hide-on-mobile absolute top-[100px] left-[180px] z-10 w-[450px] h-[400px] animate-levitate4"
-                        alt=""
-                        initial={{ x: -200, opacity: 0 }} // Slide in from left
-                        animate={isInView ? { x: 0, opacity: 1 } : { x: -200, opacity: 0 }} // Slide out
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                    />
 
                     <Blob3/>
 
                 </div>
+
+                <img src={img2} className="hide-on-mobile absolute top-[1900px] left-[180px] w-[450px] z-50 animate-levitate4" alt="" />
+
             </section>
         );
     }

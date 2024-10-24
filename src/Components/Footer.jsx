@@ -58,7 +58,7 @@ export class Footer extends Component {
                             <div className="flex items-center space-x-2">
                                 <Git className="w-[25px] h-[25px]" />
                                 <span className="relative group">
-                                    <a href="https://github.com/NLGtan"><span>Github</span></a>
+                                    <a target="_blank" href="https://github.com/NLGtan"><span>Github</span></a>
                                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
                                 </span>
                             </div>
@@ -74,7 +74,7 @@ export class Footer extends Component {
                             <div className="flex items-center space-x-2">
                                 <Ig className="w-[25px] h-[25px]" />
                                 <span className="relative group">
-                                    <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2F_neyyt%2Fprofilecard%2F%3Figsh%3DOGh6ZDdkd2t5bG4x&h=AT26TLDyv9fqXYPnSzAdvE32uJ5mDHO_1aYTgLCnItgPhfKo1lEkSTBOyUPbGtbRnsAvalh24C8_IDlJJyVUtKXK63znlg58M_apCjo73cz6ls_-pn8JltbOkIwQQRUfGrBZtRJ1mBl6qOI&s=1"><span>Instagram</span></a>
+                                    <a target="_blank" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2F_neyyt%2Fprofilecard%2F%3Figsh%3DOGh6ZDdkd2t5bG4x&h=AT26TLDyv9fqXYPnSzAdvE32uJ5mDHO_1aYTgLCnItgPhfKo1lEkSTBOyUPbGtbRnsAvalh24C8_IDlJJyVUtKXK63znlg58M_apCjo73cz6ls_-pn8JltbOkIwQQRUfGrBZtRJ1mBl6qOI&s=1"><span>Instagram</span></a>
                                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
                                 </span>
                             </div>
