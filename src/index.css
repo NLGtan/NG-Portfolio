@@ -423,20 +423,201 @@
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 361px) {
     .hero1 {
         margin-left: -100px;
-        margin-top: 130px;
+        margin-top: 160px;
         width: 300px;
+        font-size: 50px;
     }
     .hero2 {
         margin-left: -100px;   
-        margin-top: 130px;
-        width: 300px;  
+        margin-top: 110px;
+        width: 260px;  
+        font-size: 14px;
     }
     .hero3 {
-        margin-left: -60px; 
-        margin-top: 150px;
+        margin-left: -70px; 
+        margin-top: 120px;
+    }
+    .skill-int {
+        font-size: 60px;
+    }
+    .skillpar2 {
+        margin-left: -20px;
+        width: 300px;
+    }
+    .flow {
+        margin-left: 30px;
+        width: 300px;
+        text-align: left;
+        font-size: 30px;
+    }
+    .skillpar1 {
+        margin-left: -130px;
+        font-size: 30px;
+        width: 200px;
+    }
+    .skillpar-1 {
+        width: 320px;
+        margin-left: -130px;
+        font-size: 12px;
+    }
+    .skillpar2 {
+        margin-top: -210px;
+        font-size: 30px;
+    }
+    .skillpar-2 {
+        width: 300px;
+        margin-left: 30px;
+        font-size: 12px;
+    }
+    .expert-list {
+        margin-left: 180px;
+    }
+    .expertise {
+        width: 230px;
+        font-size: 24px;
+    }
+    .tool-list{
+        margin-left: 10px;
+        width: 300px;
+    }
+    .icon {
+        font-size: 14px;
+    }
+    .logos {
+        width: 30px;
+    }
+    .proj1 {
+        margin-left: 0px;
+        margin-bottom: 100px;
+    }
+    .container1 {
+        width: 320px;
+        height: 200px;
+    }
+    .proj2{
+        margin-left: 0px;
+        margin-bottom: 500px;
+    }
+    .container2{
+        width: 320px;
+        height: 200px;
+    }
+    .proj3{
+        width: 300px;
+        margin-right: -20px;
+        margin-top: -160px;
+    }
+    .proj-layout {
+        position: absolute;
+        top: 2200px;
+    }
+    .container3{
+        width: 320px;
+        height: 200px;
+    }
+    .proj-int {
+        margin-bottom: 50px;
+        font-size: 60px;
+    }
+    .sub1 {
+        font-size: 10px;
+    }
+    .sub2 {
+        font-size: 22px;
+    }
+    .sub3 {
+        width: 300px;
+        font-size: 20px;
+    }
+    .con-page {
+        position: absolute;
+        top: 3550px;
+    }
+    .con-int {
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    .contact1 {
+        width: 300px;
+        margin-left: 20px;
+    }
+    .con-par1 {
+        font-size: 24px;
+    }
+    .con-par2 {
+        width: 300px;
+        font-size: 12px;
+    }
+    .contact-form {
+        width: 100px;
+    }
+    .con-size {
+        width: 300px;
+    }
+    .footer {
+        width: 100px;
+    }
+    .con-deets {
+        position: absolute;  
+        top: 600px;
+        left: -40px;
+    }
+    .soc-med {
+        position: absolute;
+        position: absolute;
+        top: 500px;
+        right: -170px;
+    }
+    .loc {
+        position: absolute;
+        top: 600px;
+        left: -40px;
+    }
+    .con-sub-title {
+        font-size: 15px;
+    }
+    .con-cont {
+        font-size: 12px;
+    }
+    .foot {
+        font-size: 12px;
+    }
+    .foot1 {
+        font-size: 6px;
+        width: 400px;
+        margin-left: 0;
+    }
+    .foot2 {
+        position: absolute;
+        font-size: 8px;
+        left: 260px;
+        width: 100px;
+    }
+    .arr-img {
+        width: 100px;
+    }
+}
+
+
+@media (max-width: 376px) {
+    .hero1 {
+        margin-left: -100px;
+        margin-top: 160px;
+        width: 300px;
+        font-size: 50px;
+    }
+    .hero2 {
+        margin-left: -100px;   
+        margin-top: 110px;
+        width: 260px;  
+        font-size: 14px;
+    }
+    .hero3 {
+        margin-left: -70px; 
+        margin-top: 120px;
     }
     .skill-int {
         font-size: 60px;
