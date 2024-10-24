@@ -33,7 +33,7 @@ export const Nav = () => {
       className="w-full fixed top-0 z-50"
     >
       <motion.header
-        className={`w-full flex justify-between items-center px-8 md:px-32 transition-all duration-500 ${isScrolled ? "bg-white shadow-lg" : ""}`}
+        className={`fixed top-0 w-full flex justify-between items-center px-8 md:px-32 transition-all duration-500 ${isScrolled ? "bg-white shadow-lg" : ""}`}
         initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ ease: "easeInOut", duration: 0.5 }}
