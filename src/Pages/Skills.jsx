@@ -108,21 +108,15 @@ export class Skills extends Component {
 
 
                 {/* Tool box section */}
-                <div className=" absolute top-[1750px] bg-white text-black w-full">
+                <div className="absolute top-[1750px] bg-white text-black w-[100px]">
                     <div className="skillpar2 font-sat">
                         <motion.h3
                             className="flow font-sat font-bold text-5xl -ml-[120px] text-right pt-20 w-[1300px]"
-                            initial={{ opacity: 0, x: 100 }} // Slide in from right
-                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }} // Slide out
-                            transition={{ duration: 3, ease: "easeInOut" }}
                         >
                             my digital tool box.
                         </motion.h3>
                         <motion.p
                             className="skillpar-2 font-sat font-medium w-[450px] pt-5 text-lg ml-[750px]"
-                            initial={{ opacity: 0, x: 100 }} // Slide in from right
-                            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }} // Slide out
-                            transition={{ duration: 3, ease: "easeInOut" }}
                         >
                             This curated collection of tools is designed to streamline 
                             every aspect of full-stack development, from front-end 

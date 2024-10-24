@@ -37,9 +37,6 @@ export class Footer extends Component {
             <section ref={this.footerRef}>
                 <motion.div
                     className="footer font-sat absolute top-[350px] right-[200px] space-y-[100px]"
-                    initial={{ opacity: 0, x: 100 }} // Start from the right
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }} // Slide in/out
-                    transition={{ duration: 1.5, ease: "easeInOut" }}
                 >
                     <div className="con-deets">
                         <h3 className="con-sub-title font-black text-[28px] pb-2">Contact Details</h3>
