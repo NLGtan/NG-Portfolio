@@ -97,7 +97,7 @@ export class Contact extends Component {
             </motion.p>
 
             {/* Form */}
-            <div className="mt-8 space-y-6 w-full max-w-xl">
+            <div className="mt-8 mb-12 space-y-6 w-full max-w-xl">
               <motion.div
                 className="flex flex-col md:flex-row gap-6"
                 initial={{ opacity: 0, y: 50 }}
