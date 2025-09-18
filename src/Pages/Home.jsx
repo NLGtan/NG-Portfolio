@@ -70,7 +70,7 @@ export const Home = () => {
           gap-12 md:gap-20
           items-center
           place-items-center
-          md:py-0 py-16
+          md:py-0 pt-24 pb-64
         "
       >
         {/* === Text side === */}
