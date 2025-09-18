@@ -1,112 +1,131 @@
-import React, { Component } from "react";
-import { motion } from "framer-motion"; // Import motion for animations
-import pro1 from "./img/pro1.png";
-import pro2 from "./img/pro2.png";
-import pro3 from "./img/pro3.png";
+import React from "react";
+import { motion } from "framer-motion";
+import FadeSection from "../Components/FadeSection";
+import { projects } from "../data/projectsData";
 
-export class Projects extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isInView: false, // Track if the section is in view
-        };
-        this.projectsRef = React.createRef(); // Create a ref for the projects section
-    }
+// Anim
+const fadeUp = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
-    componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll);
-        this.handleScroll(); // Check if in view on mount
-    }
+// One reusable card/row
+function FeaturedProject({
+  title,
+  year,
+  role,
+  img,
+  live,
+  repo,
+  description,
+  stack = [],
+  flip = false,
+}) {
+  return (
+    <motion.article
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: false, amount: 0.3 }}
+      variants={fadeUp}
+      className={`
+        grid items-center gap-8 md:gap-12
+        md:grid-cols-2
+        ${flip ? "md:[&>div:nth-child(1)]:order-2 md:[&>div:nth-child(2)]:order-1" : ""}
+      `}
+    >
+      {/* Visual */}
+      <div className="group relative overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10">
+        <a href={live} target="_blank" rel="noopener noreferrer" aria-label={`${title} – open live`}>
+          <img
+            src={img}
+            alt={title}
+            className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            loading="lazy"
+          />
+        </a>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      </div>
 
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
-    }
+      {/* Meta */}
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-[#A1A1A1]">
+          <span className="border border-[#A1A1A1] rounded-full px-3 py-1">{year}</span>
+          {stack.length > 0 && (
+            <span className="border border-[#A1A1A1] rounded-full px-3 py-1">
+              {stack.join(" • ")}
+            </span>
+          )}
+        </div>
 
-    handleScroll = () => {
-        const { top, bottom } = this.projectsRef.current.getBoundingClientRect();
-        const isInView = top < window.innerHeight && bottom > 0; // Check if the section is in view
-        this.setState({ isInView });
-    };
+        <h3 className="text-2xl md:text-3xl font-semibold">{title}</h3>
+        {role && <p className="text-base text-neutral-300">{role}</p>}
+        {description && (
+          <p className="text-base text-neutral-300 max-w-prose">{description}</p>
+        )}
 
-    render() {
-        const { isInView } = this.state;
+        {/* Actions */}
+        <div className="flex flex-wrap gap-3 pt-1">
+          {live && (
+            <a
+              href={live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 transition"
+            >
+              Live
+              <span aria-hidden>↗</span>
+            </a>
+          )}
+          {repo && (
+            <a
+              href={repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm hover:bg-white/10 transition"
+            >
+              Code
+              <span aria-hidden>⌁</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
-        return (
-            <section id="Projects" ref={this.projectsRef} className="proj-layout absolute top-[2500px] bg-[#171717] w-[100%] flex flex-col items-center">
+export function Projects() {
+  return (
+    <FadeSection
+      id="Projects"
+      data-theme="dark"
+      className="full-bleed bg-[#171717] text-white scroll-mt-24 pt-24 pb-64"
+      // Optional “knobs” you can tweak per-page:
+      style={{
+        "--padY": "clamp(6rem, 6vw, 8rem)",   // top/bottom padding
+        "--maxW": "1100px",                   // container max width
+        "--rowGap": "clamp(8rem, 4vw, 8rem)", // gap between projects
+      }}
+    >
+      <div
+        className="container py-[var(--padY)]"
+        style={{ maxWidth: "var(--maxW)" }}
+      >
+        <motion.h1
+          className="font-sat font-thin text-5xl md:text-7xl text-center mb-12 md:mb-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={fadeUp}
+        >
+          PROJECTS
+        </motion.h1>
 
-                {/* Animated Heading */}
-                <motion.h1
-                    className="proj-int font-sat font-thin text-9xl text-center text-white pt-20 mb-40"
-                    initial={{ opacity: 0, y: 100 }} 
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }} 
-                    transition={{ duration: 1, ease: "easeInOut" }}
-                >
-                    PROJECTS
-                </motion.h1>
-
-                {/* Project 1 */}
-                <div className="proj1 font-pop font-regular text-white mb-40">
-                    <a href="https://zentry.com/" target="_blank" rel="noopener noreferrer">
-                        <div className="container1 mb-5 w-[1400px] h-[700px] object-cover overflow-hidden relative transition-all duration-500 hover:rounded-[30px]">
-                            <div className="image-wrapper w-full h-full">
-                                <img
-                                    src={pro1}
-                                    alt=""
-                                    className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
-                                />
-                            </div>
-                        </div>
-                    </a>
-                    <p className="flex row-span-2 mb-1">
-                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
-                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
-                    </p>
-                    <p className="sub2 font-medium text-[30px]">Zentry</p>
-                    <p className="sub3 font-medium text-[#CFCFCF] text-[24px]">Web Design • Frontend Development</p>
-                </div>
-
-                {/* Project 2 */}
-                <div className="proj2 font-pop font-regular text-white -ml-[600px] mb-40">
-                    <a href="https://bucket-list-checker.onrender.com/" target="_blank" rel="noopener noreferrer">
-                        <div className="container2 mb-5 w-[800px] h-[550px] object-cover overflow-hidden relative transition-all duration-500 hover:rounded-[30px]">
-                            <div className="image-wrapper w-full h-full">
-                                <img
-                                    src={pro2}
-                                    alt=""
-                                    className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
-                                />
-                            </div>
-                        </div>
-                    </a>
-                    <p className="flex row-span-2 mb-1">
-                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
-                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
-                    </p>
-                    <p className="sub2 font-medium text-[30px]">Bucket List Checker</p>
-                    <p className="sub3 font-medium text-[#CFCFCF] text-[24px]">Web Design • Fullstack Development</p>
-                </div>
-
-                {/* Project 3 */}
-                <div className="proj3 absolute top-[1250px] right-[60px] font-pop font-regular text-white">
-                    <a href="https://www.pixlspace.io/" target="_blank" rel="noopener noreferrer">
-                        <div className="container3 mb-5 w-[550px] h-[300px] object-cover overflow-hidden relative transition-all duration-500 hover:rounded-[30px]">
-                            <div className="image-wrapper w-full h-full">
-                                <img
-                                    src={pro3}
-                                    alt=""
-                                    className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
-                                />
-                            </div>
-                        </div>
-                    </a>
-                    <p className="flex row-span-2 mb-1">
-                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-5 py-2 text-[#A1A1A1] text-[20px] mr-4">2023</span>
-                        <span className="sub1 border-2 border-[#A1A1A1] rounded-[30px] px-6 py-2 text-[#A1A1A1] text-[20px]">HTML • CSS • JavaScript</span>
-                    </p>
-                    <p className="sub2 font-medium text-[30px] text-white">PIXLSPACE</p>
-                    <p className="sub3 font-medium text-[#CFCFCF] text-[24px]">Web Design • Fullstack Development</p>
-                </div>
-            </section>
-        );
-    }
+        <div className="grid gap-[var(--rowGap)]">
+          {projects.map((p) => (
+            <FeaturedProject key={p.title} {...p} />
+          ))}
+        </div>
+      </div>
+    </FadeSection>
+  );
 }

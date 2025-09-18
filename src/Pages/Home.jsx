@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { Blob } from '../Components/blobs/Blob1';
+import FadeSection from "../Components/FadeSection";
+import { Blob } from "../Components/blobs/Blob1";
 import pic from "./img/homeimg.png";
 
 export const Home = () => {
@@ -9,118 +10,133 @@ export const Home = () => {
   const controlsButton = useAnimation();
 
   useEffect(() => {
-    // Automatically slide-in all elements on page load
-    controlsText.start({
-      x: 0, // Slide in from left
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    });
-    controlsImage.start({
-      x: 0, // Slide in from right
-      opacity: 1,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    });
-    controlsButton.start({
-      x: 0, // Slide in from left
-      opacity: 1,
-      transition: { duration: 0.4, ease: "easeInOut"},
-    });
+    controlsText.start({ x: 0, opacity: 1, transition: { duration: 0.8 } });
+    controlsImage.start({ x: 0, opacity: 1, transition: { duration: 0.8 } });
+    controlsButton.start({ x: 0, opacity: 1, transition: { duration: 0.6 } });
 
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      // Slide-out effect for all elements when scrolling down
-      if (scrollY > 100) {
+      const y = window.scrollY;
+      if (y > 250) {
         controlsText.start({
-          x: -200, // Slide out to the left
+          x: -200,
           opacity: 0,
-          transition: { duration: 0.8, ease: "easeInOut" },
+          transition: { duration: 0.8 },
         });
         controlsImage.start({
-          x: 200, // Slide out to the right
+          x: 200,
           opacity: 0,
-          transition: { duration: 0.8, ease: "easeInOut" },
+          transition: { duration: 0.8 },
         });
         controlsButton.start({
-          x: -100, // Slide out to the left
+          x: -100,
           opacity: 0,
-          transition: { duration: 0.7, ease: "easeInOut" },
+          transition: { duration: 0.7 },
         });
       } else {
-        // Slide back in when scrolling up
-        controlsText.start({
-          x: 0,
-          opacity: 1,
-          transition: { duration: 0.8, ease: "easeInOut" },
-        });
+        controlsText.start({ x: 0, opacity: 1, transition: { duration: 0.8 } });
         controlsImage.start({
           x: 0,
           opacity: 1,
-          transition: { duration: 0.8, ease: "easeInOut" },
+          transition: { duration: 0.8 },
         });
         controlsButton.start({
           x: 0,
           opacity: 1,
-          transition: { duration: 0.5, ease: "easeInOut"},
+          transition: { duration: 0.5 },
         });
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [controlsText, controlsImage, controlsButton]);
 
   return (
-    <section className="w-full">
-      <div id="Home" className="absolute top-0"></div>
-      {/* Text Animation */}
-      <motion.div
-        className='hero absolute bottom-[400px] left-[150px]'
-        animate={controlsText}
-        initial={{ x: -200, opacity: 0 }} // Start off-screen with opacity 0
+    <FadeSection
+      id="Home"
+      theme="light"
+      className="
+    full-bleed bg-neutral-50
+    md:min-h-[calc(100svh-var(--nav-h))]
+    flex md:items-center
+    scroll-mt-24
+    pb-12
+  "
+    >
+      <div
+        className="
+          container
+          grid md:grid-cols-2
+          gap-12 md:gap-20
+          items-center
+          place-items-center
+          md:py-0 py-16
+        "
       >
-        <h1 className='hero1 font-pop font-bold text-7xl'>
-          Hi! I'm{" "}
-          <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
-            Neithan
-          </span>
-        </h1>
+        {/* === Text side === */}
         <motion.div
-          className='hero2 absolute top-[80px] w-[500px] h-[50px]'
           animate={controlsText}
-          initial={{ x: -200, opacity: 0 }} // Paragraph also slides in and fades in
+          initial={{ x: -200, opacity: 0 }}
+          className="
+            space-y-6 
+            flex flex-col justify-center 
+            items-center md:items-start 
+            text-center md:text-left 
+            max-w-xl md:max-w-2xl
+            mx-auto
+          "
         >
-          <p className='font-pop'>
-            A{" "}
-            <span className="font-bold">passionate full stack developer</span>{" "}
+          <h1 className="font-pop font-bold text-4xl md:text-6xl lg:text-7xl">
+            Hi! I'm{" "}
+            <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+              Neithan
+            </span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-neutral-700 max-w-lg md:max-w-xl">
+            A <span className="font-bold">passionate full stack developer</span>{" "}
             with a knack for crafting seamless, user-friendly digital
             experiences. Explore my work and see how I can bring your vision to
             life.
           </p>
+
+          <motion.button
+            animate={controlsButton}
+            initial={{ x: 0, opacity: 0 }}
+            className="
+              font-pop font-bold no-underline text-black 
+              border-2 border-black rounded-full 
+              px-8 py-3 text-sm md:text-base 
+              bg-transparent cursor-pointer shadow 
+              transition-all duration-500 
+              hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] 
+              hover:text-white hover:border-transparent
+            "
+          >
+            Download CV
+          </motion.button>
         </motion.div>
 
-        {/* Button Animation */}
-        <motion.button
-          className="hero3 font-pop font-bold absolute top-[170px] no-underline text-black border-2 border-black rounded-[30px] px-[34px] py-[15px] text-[15px] bg-transparent cursor-pointer shadow-[1px_4px_5px_0px_rgba(197,197,197,1)] transition-all duration-500 hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] hover:text-white hover:border-transparent"
-          animate={controlsButton}
-          initial={{ x: -200, opacity: 0 }} // Start off-screen to the left
+        {/* === Image side === */}
+        <motion.div
+          animate={controlsImage}
+          initial={{ x: 200, opacity: 0 }}
+          className="relative flex justify-center items-center"
         >
-          Download CV
-        </motion.button>
-
-      </motion.div>
-
-      {/* Image Pop-Out Effect */}
-      <motion.img
-        src={pic}
-        className="img1 ml-[1000px] mt-[150px] z-10 w-[400px] h-[400px] animate-levitate2"
-        alt=""
-        animate={controlsImage}
-        initial={{ x: 200, opacity: 0 }} // Start off-screen to the right
-      />
-
-        <Blob/>
-
-    </section>
+          <img
+            src={pic}
+            alt="Portrait"
+            className="
+              z-10 
+              w-[min(38vw,420px)]
+              h-auto max-w-[320px]
+              object-contain 
+              animate-levitate2
+            "
+          />
+          <Blob />
+        </motion.div>
+      </div>
+    </FadeSection>
   );
 };
