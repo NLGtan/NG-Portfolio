@@ -53,7 +53,7 @@ export const Home = () => {
 
   return (
     <FadeSection
-      id="Home"
+      id="About me"
       theme="light"
       className="
     full-bleed bg-neutral-50
@@ -70,7 +70,7 @@ export const Home = () => {
           gap-12 md:gap-20
           items-center
           place-items-center
-          md:py-0 pt-24 pb-64
+          sm:pb-64 lg:pt-32 md:pb-64 pt-16 pb-72
         "
       >
         {/* === Text side === */}
@@ -82,8 +82,8 @@ export const Home = () => {
             flex flex-col justify-center 
             items-center md:items-start 
             text-center md:text-left 
-            max-w-xl md:max-w-2xl
-            mx-auto
+            max-w-2xl md:max-w-2xl
+            mx-auto 2xl:pl-20 lg:pl-0
           "
         >
           <h1 className="font-pop font-bold text-4xl md:text-6xl lg:text-7xl">

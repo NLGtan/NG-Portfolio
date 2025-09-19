@@ -130,10 +130,17 @@ export class Contact extends Component {
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.5 }}
                 aria-label="Your message"
               />
-
               <motion.button
                 type="submit"
-                className="mt-2 font-sat font-medium text-black border-2 border-black rounded-full px-8 md:px-10 py-3 md:py-3.5 text-sm md:text-base bg-transparent cursor-pointer shadow transition-all duration-500 hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] hover:text-white hover:border-transparent"
+                className="mt-2 flex items-center justify-center
+             mx-auto md:mx-0
+             w-fit md:w-auto
+             px-6 md:px-10 py-3 md:py-3.5
+             text-sm md:text-base
+             font-sat font-medium text-black border-2 border-black rounded-full
+             bg-transparent cursor-pointer shadow transition-all duration-500
+             hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA]
+             hover:text-white hover:border-transparent"
                 initial={{ opacity: 0, y: 50 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -246,7 +253,7 @@ export class Contact extends Component {
           </p>
 
           <Link
-            to="Home"
+            to="About me"
             spy
             smooth
             offset={-88}

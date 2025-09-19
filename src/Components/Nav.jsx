@@ -141,7 +141,7 @@ export const Nav = () => {
             }
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {["Home", "Skills", "Projects", "Let's Talk"].map((item) => (
+            {["About me", "Skills", "Projects", "Let's Talk"].map((item) => (
               <li
                 key={item}
                 className={`p-1 font-pop rounded-2xl transition-all hover:translate-y-[-1px] ${panelTextClass}`}
