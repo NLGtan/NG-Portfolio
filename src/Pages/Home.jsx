@@ -56,7 +56,7 @@ export const Home = () => {
       id="About me"
       theme="light"
       className="
-    full-bleed bg-neutral-50
+    full-bleed bg-white
     md:min-h-[calc(100svh-var(--nav-h))]
     flex md:items-center
     scroll-mt-24
