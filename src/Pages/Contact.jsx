@@ -6,10 +6,19 @@ import { ReactComponent as Git } from "../Components/img/logo-github.svg";
 import { ReactComponent as Lk } from "../Components/img/Linkedin-logo.svg";
 import { ReactComponent as Ig } from "../Components/img/logo-instagram.svg";
 
-export class Contact extends Component {
+class Contact extends Component {
   constructor(props) {
     super(props);
-    this.state = { isInView: false };
+    this.state = {
+      isInView: false,
+      name: "",
+      email: "",
+      message: "",
+      honey: "",       // honeypot
+      sending: false,
+      sent: false,
+      error: "",
+    };
     this.contactRef = React.createRef();
   }
 
@@ -28,8 +37,54 @@ export class Contact extends Component {
     this.setState({ isInView });
   };
 
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value, error: "", sent: false });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { name, email, message, honey, sending } = this.state;
+    if (sending) return;
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      this.setState({ error: "Please fill out all fields." });
+      return;
+    }
+
+    try {
+      this.setState({ sending: true, error: "" });
+
+      // CRA-friendly: REACT_APP_* in dev, else same-origin /api/contact
+      const endpoint =
+        process.env.REACT_APP_CONTACT_API_URL || "/api/contact";
+
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message, honey }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || "Failed to send.");
+
+      this.setState({
+        sent: true,
+        name: "",
+        email: "",
+        message: "",
+        honey: "",
+      });
+    } catch (err) {
+      this.setState({ error: err.message || "Something went wrong." });
+    } finally {
+      this.setState({ sending: false });
+    }
+  };
+
   render() {
-    const { isInView } = this.state;
+    const { isInView, name, email, message, honey, sending, sent, error } =
+      this.state;
 
     return (
       <section
@@ -49,15 +104,7 @@ export class Contact extends Component {
         </motion.h1>
 
         {/* Main grid */}
-        <div
-          className="
-            container max-w-7xl mx-auto
-            px-6 md:px-10
-            py-10 md:py-14 lg:py-20
-            grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12
-            gap-10 md:gap-14 lg:gap-16
-          "
-        >
+        <div className="container max-w-7xl mx-auto px-6 md:px-10 py-10 md:py-14 lg:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-14 lg:gap-16">
           {/* LEFT — form and intro */}
           <div className="pt-2 lg:col-span-7">
             <motion.h2
@@ -96,68 +143,100 @@ export class Contact extends Component {
               agencies, and design studios.
             </motion.p>
 
-            {/* Form */}
-            <div className="mt-8 mb-12 space-y-6 w-full max-w-xl">
+            {/* FORM */}
+            <form
+              onSubmit={this.handleSubmit}
+              className="mt-8 mb-12 space-y-6 w-full max-w-xl"
+            >
+              {/* Status messages */}
+              {sent && (
+                <div className="rounded-lg border border-green-200 bg-green-50 text-green-700 px-3 py-2 text-sm">
+                  Thanks! Your message was sent.
+                </div>
+              )}
+              {!!error && (
+                <div className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-3 py-2 text-sm">
+                  {error}
+                </div>
+              )}
+
+              {/* Honeypot (hidden) */}
+              <input
+                type="text"
+                name="honey"
+                value={honey}
+                onChange={this.handleChange}
+                className="hidden"
+                autoComplete="off"
+                tabIndex="-1"
+              />
+
               <motion.div
                 className="flex flex-col md:flex-row gap-6"
                 initial={{ opacity: 0, y: 50 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-                }
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.4 }}
               >
                 <input
                   type="text"
+                  name="name"
+                  value={name}
+                  onChange={this.handleChange}
                   placeholder="Your name"
+                  required
+                  autoComplete="name"
                   className="flex-1 border-b-2 border-gray-300 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500"
                   aria-label="Your name"
                 />
                 <input
                   type="email"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
                   placeholder="Your email"
+                  required
+                  autoComplete="email"
                   className="flex-1 border-b-2 border-gray-300 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500"
                   aria-label="Your email"
                 />
               </motion.div>
 
               <motion.textarea
+                name="message"
+                value={message}
+                onChange={this.handleChange}
                 placeholder="Your message"
+                required
                 className="w-full border-b-2 border-gray-300 h-36 md:h-40 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500 resize-y"
                 initial={{ opacity: 0, y: 50 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-                }
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.5 }}
                 aria-label="Your message"
               />
+
               <motion.button
                 type="submit"
-                className="mt-2 flex items-center justify-center
-             mx-auto md:mx-0
-             w-fit md:w-auto
-             px-6 md:px-10 py-3 md:py-3.5
-             text-sm md:text-base
-             font-sat font-medium text-black border-2 border-black rounded-full
-             bg-transparent cursor-pointer shadow transition-all duration-500
-             hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA]
-             hover:text-white hover:border-transparent"
+                disabled={sending}
+                className={`mt-2 flex items-center justify-center
+                  mx-auto md:mx-0
+                  w-fit md:w-auto
+                  px-6 md:px-10 py-3 md:py-3.5
+                  text-sm md:text-base
+                  font-sat font-medium text-black border-2 border-black rounded-full
+                  bg-transparent shadow transition-all duration-500
+                  ${sending ? "opacity-70 cursor-not-allowed" : "cursor-pointer hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] hover:text-white hover:border-transparent"}`}
                 initial={{ opacity: 0, y: 50 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-                }
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6 }}
               >
-                Send Message
+                {sending ? "Sending…" : "Send Message"}
               </motion.button>
-            </div>
+            </form>
           </div>
 
           {/* RIGHT — details / social / location */}
           <motion.div
-            className="  space-y-8 md:space-y-10 lg:space-y-12
-                         lg:col-span-5
-                         lg:pl-16   /* more padding left */
-                         lg:ml-auto /* push it further right */"
+            className="space-y-8 md:space-y-10 lg:space-y-12 lg:col-span-5 lg:pl-16 lg:ml-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 1.2, ease: "easeInOut", delay: 0.4 }}
@@ -168,10 +247,7 @@ export class Contact extends Component {
                 Contact Details
               </h3>
               <div className="flex flex-col space-y-2 text-[clamp(1rem,1.8vw,0rem)]">
-                <a
-                  href="mailto:gaborne.neithanlouisn@gmail.com"
-                  className="relative group w-fit"
-                >
+                <a href="mailto:gaborne.neithanlouisn@gmail.com" className="relative group w-fit">
                   gaborne.neithanlouisn@gmail.com
                   <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
                 </a>
@@ -190,36 +266,21 @@ export class Contact extends Component {
               <div className="flex flex-col space-y-4 text-[clamp(1rem,1.8vw,0rem)]">
                 <div className="flex items-center gap-3">
                   <Git className="w-[24px] h-[24px]" />
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://github.com/NLGtan"
-                    className="relative group w-fit"
-                  >
+                  <a target="_blank" rel="noreferrer" href="https://github.com/NLGtan" className="relative group w-fit">
                     Github
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Lk className="w-[24px] h-[24px]" />
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.linkedin.com/"
-                    className="relative group w-fit"
-                  >
+                  <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/" className="relative group w-fit">
                     LinkedIn
                     <span className="font-sat absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Ig className="w-[24px] h-[24px]" />
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.instagram.com/_neyyt/"
-                    className="relative group w-fit"
-                  >
+                  <a target="_blank" rel="noreferrer" href="https://www.instagram.com/_neyyt/" className="relative group w-fit">
                     Instagram
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
                   </a>
@@ -268,3 +329,5 @@ export class Contact extends Component {
     );
   }
 }
+
+export default Contact;
