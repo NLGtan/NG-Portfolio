@@ -39,6 +39,12 @@ img,svg,video,canvas,iframe{ max-width:100%; height:auto; display:block; }
   100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
 }
 
+@media (max-width: 768px) {
+  .blob {
+    display: none;
+  }
+}
+
 
 /* Keep blob2/blob3 as you like, or convert similarly */
 .blob2 {
@@ -48,7 +54,7 @@ img,svg,video,canvas,iframe{ max-width:100%; height:auto; display:block; }
     rgba(237, 115, 143, 1),
     rgba(171, 69, 202, 1)
   );
-  width: clamp(220px, 38vw, 420px);
+  width: clamp(220, 38vw, 420px);
   height: clamp(220px, 38vw, 420px);
 
   animation: animate 5s ease-in-out infinite;
