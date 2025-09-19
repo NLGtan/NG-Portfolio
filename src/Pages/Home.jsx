@@ -53,7 +53,7 @@ export const Home = () => {
 
   return (
     <FadeSection
-      id="Home"
+      id="About me"
       theme="light"
       className="
     full-bleed bg-neutral-50
