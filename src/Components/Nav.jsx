@@ -97,17 +97,17 @@
               aria-expanded={navActive}
             >
               <span
-                className={`absolute top-1/2 left-0 w-8 h-0.5 ${barColorClass} transition-all duration-300 ${
+                className={`absolute top-1/2 left-0 w-6 h-1 ${barColorClass} transition-all duration-300 ${
                   navActive ? "rotate-45" : "-translate-y-2"
                 }`}
               />
               <span
-                className={`absolute top-1/2 left-0 w-8 h-0.5 ${barColorClass} transition-all duration-300 ${
+                className={`absolute top-1/2 left-0 w-6 h-1 ${barColorClass} transition-all duration-300 ${
                   navActive ? "opacity-0" : ""
                 }`}
               />
               <span
-                className={`absolute top-1/2 left-0 w-8 h-0.5 ${barColorClass} transition-all duration-300 ${
+                className={`absolute top-1/2 left-0 w-6 h-1 ${barColorClass} transition-all duration-300 ${
                   navActive ? "-rotate-45" : "translate-y-2"
                 }`}
               />
