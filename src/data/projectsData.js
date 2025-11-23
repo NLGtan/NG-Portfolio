@@ -5,15 +5,15 @@ import pro3 from "../Pages/img/pro3.png";
 
 export const projects = [
   {
-    title: "Zentry",
-    year: "2023",
-    role: "Web Design • Frontend",
+    title: "Kilowhatt?",
+    year: "2025",
+    role: "Mobile App • Full-stack",
     img: pro1,
-    live: "https://zentry.com/",
-    repo: "",
+    live: "",
+    repo: "https://github.com/NLGtan/kilowhatt_app",
     description:
-      "Marketing site recreation with attention to motion, layered visuals, and responsive typography.",
-    stack: ["HTML", "CSS", "JavaScript"],
+      "A Flutter mobile app connecting homeowners and tenants. Features include role-based dashboards, real-time bill tracking, OCR-based meter reading, push notifications, and Supabase image uploads for seamless property management.",
+    stack: ["Flutter", "Firebase", "Supabase"],
     flip: false,
   },
   {
@@ -22,21 +22,21 @@ export const projects = [
     role: "Web Design • Full-stack",
     img: pro2,
     live: "https://bucket-list-checker.onrender.com/",
-    repo: "",
+    repo: "https://github.com/NLGtan/bucketlist",
     description:
-      "A tiny app to track bucket-list items with simple auth and CRUD. Built for fast loading and clean UX.",
+      "A web app to track personal bucket-list items with authentication, CRUD operations, and a clean, fast-loading interface. Designed for usability and smooth user experience.",
     stack: ["Node", "Express", "MongoDB"],
     flip: true,
   },
   {
-    title: "PIXLSPACE",
+    title: "Zentry",
     year: "2023",
-    role: "Web Design • Full-stack",
+    role: "Web Design • Frontend",
     img: pro3,
-    live: "https://www.pixlspace.io/",
+    live: "https://zentry.com/",
     repo: "",
     description:
-      "Landing + product pages with componentized UI and content blocks designed for growth.",
+      "A marketing site recreation focusing on motion, layered visuals, and responsive typography. Emphasizes modern frontend techniques and interactive UI design.",
     stack: ["React", "Tailwind", "Framer Motion"],
     flip: false,
   },

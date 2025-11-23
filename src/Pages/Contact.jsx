@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import arrow from "../Components/img/ArrowUp.png";
+import { ReactComponent as Em } from "../Components/img/mail.svg";
+import Me from "../Components/img/messenger.png";
+import { ReactComponent as Cp } from "../Components/img/call.svg";
 import { ReactComponent as Git } from "../Components/img/logo-github.svg";
 import { ReactComponent as Lk } from "../Components/img/Linkedin-logo.svg";
 import { ReactComponent as Ig } from "../Components/img/logo-instagram.svg";
@@ -14,7 +17,7 @@ class Contact extends Component {
       name: "",
       email: "",
       message: "",
-      honey: "",       // honeypot
+      honey: "", // honeypot
       sending: false,
       sent: false,
       error: "",
@@ -56,8 +59,7 @@ class Contact extends Component {
       this.setState({ sending: true, error: "" });
 
       // CRA-friendly: REACT_APP_* in dev, else same-origin /api/contact
-      const endpoint =
-        process.env.REACT_APP_CONTACT_API_URL || "/api/contact";
+      const endpoint = process.env.REACT_APP_CONTACT_API_URL || "/api/contact";
 
       const res = await fetch(endpoint, {
         method: "POST",
@@ -88,13 +90,13 @@ class Contact extends Component {
 
     return (
       <section
-        id="Let's Talk"
         data-theme="light"
         ref={this.contactRef}
         className="w-full bg-white scroll-mt-24 pt-24"
       >
         {/* Heading */}
         <motion.h1
+          id="Let's Talk"
           className="font-sat font-thin text-[clamp(2.25rem,6vw,4.5rem)] text-center pt-12 md:pt-16 pb-6 md:pb-10"
           initial={{ opacity: 0, y: 100 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
@@ -174,7 +176,9 @@ class Contact extends Component {
               <motion.div
                 className="flex flex-col md:flex-row gap-6"
                 initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                }
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.4 }}
               >
                 <input
@@ -209,7 +213,9 @@ class Contact extends Component {
                 required
                 className="w-full border-b-2 border-gray-300 h-36 md:h-40 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500 resize-y"
                 initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                }
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.5 }}
                 aria-label="Your message"
               />
@@ -224,9 +230,15 @@ class Contact extends Component {
                   text-sm md:text-base
                   font-sat font-medium text-black border-2 border-black rounded-full
                   bg-transparent shadow transition-all duration-500
-                  ${sending ? "opacity-70 cursor-not-allowed" : "cursor-pointer hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] hover:text-white hover:border-transparent"}`}
+                  ${
+                    sending
+                      ? "opacity-70 cursor-not-allowed"
+                      : "cursor-pointer hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] hover:text-white hover:border-transparent"
+                  }`}
                 initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+                }
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6 }}
               >
                 {sending ? "Sending…" : "Send Message"}
@@ -241,20 +253,44 @@ class Contact extends Component {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 1.2, ease: "easeInOut", delay: 0.4 }}
           >
+
             {/* Contact details */}
             <div>
               <h3 className="font-sat font-black text-[clamp(1.25rem,2.2vw,1.5rem)] pb-2">
                 Contact Details
               </h3>
-              <div className="flex flex-col space-y-2 text-[clamp(1rem,1.8vw,0rem)]">
-                <a href="mailto:gaborne.neithanlouisn@gmail.com" className="relative group w-fit">
-                  gaborne.neithanlouisn@gmail.com
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
-                </a>
-                <a href="tel:+639686494396" className="relative group w-fit">
-                  +63 968 649 4396
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
-                </a>
+              <div className="flex flex-col space-y-4 text-[clamp(1rem,1.8vw,0rem)]">
+                <div className="flex items-center gap-3">
+                  <Em className="w-[24px] h-[24px]" />
+                  <a
+                    href="mailto:gaborne.neithanlouisn@gmail.com"
+                    className="relative group w-fit"
+                  >
+                    gaborne.neithanlouisn@gmail.com
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <img src={Me} alt="Messenger" className="w-[24px] h-[24px]" />
+                  <a
+                    href="https://m.me/neithan.gaborne"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="relative group w-fit"
+                  >
+                    Neithan Louis N. Gaborne
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Cp className="w-[24px] h-[24px]" />
+                  <a href="tel:+639686494396" className="relative group w-fit">
+                    +63 968 649 4396
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -266,21 +302,36 @@ class Contact extends Component {
               <div className="flex flex-col space-y-4 text-[clamp(1rem,1.8vw,0rem)]">
                 <div className="flex items-center gap-3">
                   <Git className="w-[24px] h-[24px]" />
-                  <a target="_blank" rel="noreferrer" href="https://github.com/NLGtan" className="relative group w-fit">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://github.com/NLGtan"
+                    className="relative group w-fit"
+                  >
                     Github
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Lk className="w-[24px] h-[24px]" />
-                  <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/" className="relative group w-fit">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.linkedin.com/"
+                    className="relative group w-fit"
+                  >
                     LinkedIn
                     <span className="font-sat absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Ig className="w-[24px] h-[24px]" />
-                  <a target="_blank" rel="noreferrer" href="https://www.instagram.com/_neyyt/" className="relative group w-fit">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.instagram.com/_neyyt/"
+                    className="relative group w-fit"
+                  >
                     Instagram
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all duration-300 group-hover:w-full" />
                   </a>

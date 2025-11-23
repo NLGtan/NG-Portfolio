@@ -132,7 +132,6 @@ function FeaturedProject({
 export function Projects() {
   return (
     <FadeSection
-      id="Projects"
       theme="dark" // FadeSection writes data-theme for your navbar
       className="full-bleed bg-[#171717] text-white scroll-mt-24 pt-24 pb-64"
       style={{
@@ -143,7 +142,8 @@ export function Projects() {
     >
       <div className="container py-[var(--padY)]" style={{ maxWidth: "var(--maxW)" }}>
         <motion.h1
-          className="font-sat font-thin text-5xl md:text-7xl text-center mb-12 md:mb-16"
+          id="Projects"
+          className="font-sat font-thin text-5xl md:text-7xl text-center mb-12 md:mb-16 pt-8 pb-14"
           initial="initial"
           whileInView="animate"
           viewport={{ once: false, amount: 0.3 }}

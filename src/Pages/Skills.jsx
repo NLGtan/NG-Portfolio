@@ -34,7 +34,6 @@ export function Skills() {
     <>
       {/* ============== SKILLS (dark page) ============== */}
       <FadeSection
-        id="Skills"
         theme="dark"
         className="full-bleed bg-[#171717] text-white scroll-mt-24"
         /* —— TWEAK KNOBS for this page —— */
@@ -56,7 +55,8 @@ export function Skills() {
       >
         <div className="container relative min-h-[calc(100svh-var(--nav-h))] py-[var(--padY)]">
           <motion.h1
-            className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-10 md:mb-16"
+            id="Skills"
+            className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-10 md:mb-16 pt-10"
             initial="initial"
             whileInView="animate"
             viewport={{ once: false, amount: 0.3 }}
