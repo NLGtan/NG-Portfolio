@@ -62,7 +62,6 @@ export const Nav = () => {
 
   const headerBG = isDarkBehind ? darkHex : lightHex;
   const linkColorClass = isDarkBehind ? "text-white" : "text-black";
-  const barColorClass = isDarkBehind ? "bg-white" : "bg-black";
   const panelBG = isDarkBehind ? darkHex : lightHex;
   const panelBorder = isDarkBehind
     ? "rgba(255,255,255,.12)"
@@ -96,32 +95,55 @@ export const Nav = () => {
             />
           </a>
 
-          {/* HAMBURGER (mobile only) */}
-          <button
-            className="relative h-8 w-8 xl:hidden"
+          {/* ======================== */}
+          {/* 4-CIRCLE CUBE HAMBURGER (adjustable) */}
+          {/* ======================== */}
+          <div
+            className="relative xl:hidden cursor-pointer"
+            style={{ width: 48, height: 48 }} // container size
             onClick={toggleNav}
-            aria-label="Toggle navigation"
-            aria-expanded={navActive}
           >
-            <span
-              className={`absolute top-1/2 left-0 w-6 h-0.5 ${barColorClass} transition-all ${
-                navActive ? "rotate-45" : "-translate-y-2"
-              }`}
-            />
-            <span
-              className={`absolute top-1/2 left-0 w-6 h-0.5 ${barColorClass} transition-all ${
-                navActive ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`absolute top-1/2 left-0 w-6 h-0.5 ${barColorClass} transition-all ${
-                navActive ? "-rotate-45" : "translate-y-2"
-              }`}
-            />
-          </button>
+            {Array(4)
+              .fill(0)
+              .map((_, i) => {
+                const circleSize = 12; // size of each circle
+                const gap = 8; // distance from edges
+
+                const positions = [
+                  { top: gap, left: gap }, // top-left
+                  { top: gap, left: 48 - gap - circleSize }, // top-right
+                  { top: 48 - gap - circleSize, left: gap }, // bottom-left
+                  { top: 48 - gap - circleSize, left: 48 - gap - circleSize }, // bottom-right
+                ];
+
+                return (
+                  <motion.div
+                    key={i}
+                    style={{
+                      width: circleSize,
+                      height: circleSize,
+                      top: positions[i].top,
+                      left: positions[i].left,
+                      position: "absolute",
+                      borderRadius: "50%",
+                    }}
+                    animate={{
+                      scale: navActive ? 0.6 : 1, // shrink on click
+                      backgroundColor: isDarkBehind ? "#FFFFFF" : "#171717", // color transition
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 25,
+                      duration: 0.3,
+                    }}
+                  />
+                );
+              })}
+          </div>
 
           {/* ======================== */}
-          {/* DESKTOP NAV (no animation) */}
+          {/* DESKTOP NAV (unchanged) */}
           {/* ======================== */}
           <ul
             className={`hidden xl:flex xl:items-center xl:gap-6 xl:ml-auto font-regular text-base ${linkColorClass}`}
@@ -146,106 +168,105 @@ export const Nav = () => {
           </ul>
 
           {/* ======================== */}
-          {/* MOBILE NAV (animated)    */}
+          {/* MOBILE DROPDOWN (unchanged) */}
           {/* ======================== */}
-<motion.ul
-  className="
-    xl:hidden
-    absolute right-8 top-16 md:top-20
-    rounded-2xl border backdrop-blur-sm overflow-hidden
-    font-regular text-base
-  "
-  style={{ zIndex: 60 }}
-
-  initial={{
-    height: 0,
-    y: -12,
-    clipPath: "inset(0% 0% 100% 0%)",
-    borderWidth: 0,
-    pointerEvents: "none",
-  }}
-  animate={
-    navActive
-      ? {
-          height: "auto",
-          y: 0,
-          clipPath: "inset(0% 0% 0% 0%)",
-          borderWidth: 1,
-          pointerEvents: "auto",
-          backgroundColor: panelBG,
-          borderColor: panelBorder,
-          color: isDarkBehind ? "#FFFFFF" : "#111111",
-          boxShadow: isDarkBehind
-            ? "0 20px 40px rgba(0,0,0,.35)"
-            : "0 20px 40px rgba(0,0,0,.15)",
-        }
-      : {
-          height: 0,
-          y: -12,
-          clipPath: "inset(0% 0% 100% 0%)",
-          borderWidth: 0,
-          pointerEvents: "none",
-        }
-  }
-  transition={{
-    duration: 0.38,
-    ease: [0.25, 1, 0.5, 1], // buttery + premium
-  }}
->
-  <motion.div
-    className="p-4 space-y-2"
-    initial="closed"
-    animate={navActive ? "open" : "closed"}
-    variants={{
-      open: {
-        transition: {
-          staggerChildren: 0.06,
-          delayChildren: 0.05,
-        },
-      },
-      closed: {},
-    }}
-  >
-    {links.map((item) => (
-      <motion.li
-        key={item}
-        variants={{
-          open: {
-            y: 0,
-            opacity: 1,
-            filter: "blur(0px)",
-            transition: { ease: [0.25, 1, 0.5, 1], duration: 0.32 },
-          },
-          closed: {
-            y: -8,
-            opacity: 0,
-            filter: "blur(4px)",
-            transition: { duration: 0.15 },
-          },
-        }}
-        className={`font-pop rounded-xl list-none ${panelTextClass}`}
-      >
-        <ScrollLink
-          to={item}
-          spy
-          smooth
-          offset={-88}
-          duration={500}
-          onClick={closeMenu}
-          className={`
-            cursor-pointer block px-3 py-2 rounded-xl ${panelTextClass}
-            transition-all duration-300
-            hover:bg-clip-text hover:text-transparent 
-            hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500
-          `}
-        >
-          {item}
-        </ScrollLink>
-      </motion.li>
-    ))}
-  </motion.div>
-</motion.ul>
-
+          <motion.ul
+            className="
+              xl:hidden
+              absolute right-8 top-16 md:top-20
+              rounded-2xl overflow-hidden
+              font-regular text-base
+            "
+            style={{ zIndex: 60 }}
+            initial={{
+              height: 0,
+              y: -12,
+              clipPath: "inset(0% 0% 100% 0%)",
+              borderWidth: 0,
+              pointerEvents: "none",
+            }}
+            animate={
+              navActive
+                ? {
+                    height: "auto",
+                    y: 0,
+                    clipPath: "inset(0% 0% 0% 0%)",
+                    borderWidth: 1,
+                    pointerEvents: "auto",
+                    backgroundColor: panelBG,
+                    borderColor: panelBorder,
+                    color: isDarkBehind ? "#FFFFFF" : "#111111",
+                    boxShadow: isDarkBehind
+                      ? "0 20px 40px rgba(0,0,0,0)"
+                      : "0 20px 40px rgba(0,0,0,0)",
+                  }
+                : {
+                    height: 0,
+                    y: -12,
+                    clipPath: "inset(0% 0% 100% 0%)",
+                    borderWidth: 0,
+                    pointerEvents: "none",
+                    borderColor: "transparent",
+                  }
+            }
+            transition={{
+              duration: 0.38,
+              ease: [0.25, 1, 0.5, 1],
+            }}
+          >
+            <motion.div
+              className="p-4 space-y-2"
+              initial="closed"
+              animate={navActive ? "open" : "closed"}
+              variants={{
+                open: {
+                  transition: {
+                    staggerChildren: 0.06,
+                    delayChildren: 0.05,
+                  },
+                },
+                closed: {},
+              }}
+            >
+              {links.map((item) => (
+                <motion.li
+                  key={item}
+                  variants={{
+                    open: {
+                      y: 0,
+                      opacity: 1,
+                      filter: "blur(0px)",
+                      transition: { ease: [0.25, 1, 0.5, 1], duration: 0.32 },
+                    },
+                    closed: {
+                      y: -8,
+                      opacity: 0,
+                      filter: "blur(4px)",
+                      transition: { duration: 0.15 },
+                    },
+                  }}
+                  className={`font-pop rounded-xl list-none ${panelTextClass}`}
+                >
+                  <ScrollLink
+                    to={item}
+                    spy
+                    smooth
+                    offset={-88}
+                    duration={500}
+                    onClick={closeMenu}
+                    className={`
+                      cursor-pointer block px-3 py-2 rounded-xl ${panelTextClass}
+                      transition-all duration-300
+                      hover:bg-clip-text hover:text-transparent 
+                      hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500
+                    `}
+                  >
+                    {item}
+                  </ScrollLink>
+                </motion.li>
+              ))}
+            </motion.div>
+          </motion.ul>
         </motion.header>
       </motion.div>
 
