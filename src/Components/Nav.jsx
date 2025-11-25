@@ -148,54 +148,104 @@ export const Nav = () => {
           {/* ======================== */}
           {/* MOBILE NAV (animated)    */}
           {/* ======================== */}
-          <motion.ul
-            className="
-              xl:hidden
-              absolute right-8 top-16 md:top-20
-              rounded-xl p-5 border backdrop-blur-sm
-              font-regular text-base
-            "
-            style={{ zIndex: 60 }}
-            initial={{ opacity: 0, y: -10, pointerEvents: "none" }}
-            animate={
-              navActive
-                ? {
-                    opacity: 1,
-                    y: 0,
-                    pointerEvents: "auto",
-                    backgroundColor: panelBG,
-                    color: isDarkBehind ? "#FFFFFF" : "#111111",
-                    borderColor: panelBorder,
-                    boxShadow: isDarkBehind
-                      ? "0 10px 30px rgba(0,0,0,.35)"
-                      : "0 10px 30px rgba(0,0,0,.15)",
-                  }
-                : { opacity: 0, y: -10, pointerEvents: "none" }
-            }
-            transition={{ duration: 0.25, ease: "easeOut" }}
-          >
-            {links.map((item) => (
-              <li
-                key={item}
-                className={`p-1 font-pop rounded-2xl ${panelTextClass}`}
-              >
-                <ScrollLink
-                  to={item}
-                  spy
-                  smooth
-                  offset={-88}
-                  duration={500}
-                  onClick={closeMenu}
-                  className={`cursor-pointer px-2 py-1 rounded-xl ${panelTextClass}
-                    transition-colors duration-300
-                    hover:bg-clip-text hover:text-transparent 
-                    hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500`}
-                >
-                  {item}
-                </ScrollLink>
-              </li>
-            ))}
-          </motion.ul>
+<motion.ul
+  className="
+    xl:hidden
+    absolute right-8 top-16 md:top-20
+    rounded-2xl border backdrop-blur-sm overflow-hidden
+    font-regular text-base
+  "
+  style={{ zIndex: 60 }}
+
+  initial={{
+    height: 0,
+    y: -12,
+    clipPath: "inset(0% 0% 100% 0%)",
+    borderWidth: 0,
+    pointerEvents: "none",
+  }}
+  animate={
+    navActive
+      ? {
+          height: "auto",
+          y: 0,
+          clipPath: "inset(0% 0% 0% 0%)",
+          borderWidth: 1,
+          pointerEvents: "auto",
+          backgroundColor: panelBG,
+          borderColor: panelBorder,
+          color: isDarkBehind ? "#FFFFFF" : "#111111",
+          boxShadow: isDarkBehind
+            ? "0 20px 40px rgba(0,0,0,.35)"
+            : "0 20px 40px rgba(0,0,0,.15)",
+        }
+      : {
+          height: 0,
+          y: -12,
+          clipPath: "inset(0% 0% 100% 0%)",
+          borderWidth: 0,
+          pointerEvents: "none",
+        }
+  }
+  transition={{
+    duration: 0.38,
+    ease: [0.25, 1, 0.5, 1], // buttery + premium
+  }}
+>
+  <motion.div
+    className="p-4 space-y-2"
+    initial="closed"
+    animate={navActive ? "open" : "closed"}
+    variants={{
+      open: {
+        transition: {
+          staggerChildren: 0.06,
+          delayChildren: 0.05,
+        },
+      },
+      closed: {},
+    }}
+  >
+    {links.map((item) => (
+      <motion.li
+        key={item}
+        variants={{
+          open: {
+            y: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            transition: { ease: [0.25, 1, 0.5, 1], duration: 0.32 },
+          },
+          closed: {
+            y: -8,
+            opacity: 0,
+            filter: "blur(4px)",
+            transition: { duration: 0.15 },
+          },
+        }}
+        className={`font-pop rounded-xl list-none ${panelTextClass}`}
+      >
+        <ScrollLink
+          to={item}
+          spy
+          smooth
+          offset={-88}
+          duration={500}
+          onClick={closeMenu}
+          className={`
+            cursor-pointer block px-3 py-2 rounded-xl ${panelTextClass}
+            transition-all duration-300
+            hover:bg-clip-text hover:text-transparent 
+            hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500
+          `}
+        >
+          {item}
+        </ScrollLink>
+      </motion.li>
+    ))}
+  </motion.div>
+</motion.ul>
+
         </motion.header>
       </motion.div>
 
