@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import arrow from "../Components/img/ArrowUp.png";
+import Lottie from "lottie-react";
 import { ReactComponent as Em } from "../Components/img/mail.svg";
 import Me from "../Components/img/messenger.png";
 import { ReactComponent as Cp } from "../Components/img/call.svg";
 import { ReactComponent as Git } from "../Components/img/logo-github.svg";
 import { ReactComponent as Lk } from "../Components/img/Linkedin-logo.svg";
 import { ReactComponent as Ig } from "../Components/img/logo-instagram.svg";
+import arrowLottie from "../Components/animations/scroll_up.json";
 
 class Contact extends Component {
   constructor(props) {
@@ -253,7 +254,6 @@ class Contact extends Component {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 1.2, ease: "easeInOut", delay: 0.4 }}
           >
-
             {/* Contact details */}
             <div>
               <h3 className="font-sat font-black text-[clamp(1.25rem,2.2vw,1.5rem)] pb-2">
@@ -373,7 +373,12 @@ class Contact extends Component {
             className="font-pop font-black text-[clamp(1rem,1.5vw,1rem)] flex items-center gap-2 md:ml-auto cursor-pointer"
           >
             BACK TO TOP
-            <img src={arrow} alt="Arrow Up" className="h-4" />
+            <Lottie
+              animationData={arrowLottie}
+              loop
+              autoplay
+              className="h-6 w-6 md:h-7 md:w-7 rotate-180"
+            />
           </Link>
         </div>
       </section>

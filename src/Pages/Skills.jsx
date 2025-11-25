@@ -77,7 +77,7 @@ export function Skills() {
             style={{ maxWidth: "var(--maxW)" }}
           >
             {/* Left — text */}
-            <div className="space-y-6 max-w-[48ch] lg:pl-[var(--textPadL)]">
+            <div className="space-y-6 max-w-none lg:pl-[var(--textPadL)]">
               <motion.h3
                 className="font-sat font-bold text-3xl md:text-4xl lg:text-5xl"
                 variants={slideLeft}
@@ -95,14 +95,17 @@ export function Skills() {
                 whileInView="animate"
                 viewport={{ once: false, amount: 0.3 }}
               >
-                I specialize in building scalable web applications from the
-                ground up. My skill set spans front-end technologies like HTML,
-                CSS, and JavaScript frameworks, as well as back-end development
-                with Node.js, Python, and database management.
+                I specialize in building modern, scalable digital products
+                across web, mobile, and emerging technologies. My expertise
+                spans end-to-end development—from crafting intuitive UI/UX
+                experiences to developing robust full-stack applications. I work
+                with front-end technologies, back-end systems, mobile
+                frameworks, and Web3 tools to create user-centric and
+                high-performance solutions.
               </motion.p>
 
               <motion.ul
-                className="font-sat font-bold text-2xl md:text-3xl space-y-3 pt-2"
+                className="font-sat font-bold text-2xl md:text-3xl space-y-3 pt-2 md:ml-10"
                 variants={slideLeft}
                 initial="initial"
                 whileInView="animate"
@@ -110,10 +113,10 @@ export function Skills() {
               >
                 {[
                   "Web Development",
-                  "Web Design",
+                  "Mobile Development",
+                  "Web3/Blockchain",
+                  "Full Stack Developer",
                   "UI/UX Design",
-                  "Full Stack Dev",
-                  "ML/AI",
                 ].map((item) => (
                   <li
                     key={item}
@@ -289,57 +292,36 @@ export function Skills() {
                 whileInView="animate"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-                  <ul className="space-y-4">
-                    {[
-                      { img: py, label: "Python", lev: "animate-levitate1" },
-                      {
-                        img: js,
-                        label: "JavaScript",
-                        lev: "animate-levitate2",
-                      },
-                      { img: html, label: "HTML", lev: "animate-levitate1" },
-                      { img: css, label: "CSS", lev: "animate-levitate2" },
-                    ].map(({ img, label, lev }) => (
-                      <li
-                        key={label}
-                        className="icon flex items-center gap-3 md:gap-4 pb-1 font-pop text-neutral-500 font-semibold hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500 transform hover:translate-x-3 transition-all duration-300"
-                      >
-                        <img
-                          src={img}
-                          alt={label}
-                          className={`w-12 h-12 md:w-14 md:h-14 object-contain ${lev}`}
-                        />
-                        {label}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="grid grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+  {[
+    { img: py, label: "Python", lev: "animate-levitate1" },
+    { img: js, label: "JavaScript", lev: "animate-levitate2" },
+    { img: html, label: "HTML", lev: "animate-levitate1" },
+    { img: css, label: "CSS", lev: "animate-levitate2" },
+    { img: re, label: "React", lev: "animate-levitate2" },
+    { img: md, label: "MongoDB", lev: "animate-levitate1" },
+    { img: fig, label: "Figma", lev: "animate-levitate2" },
+    { img: fm, label: "Framer Motion", lev: "animate-levitate1" },
+  ].map(({ img, label, lev }) => (
+    <div
+      key={label}
+      className="flex items-center gap-2 sm:gap-3 md:gap-4 pb-2
+                 font-pop text-neutral-500 font-semibold
+                 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500
+                 transform hover:translate-x-1 sm:hover:translate-x-2 md:hover:translate-x-3
+                 transition-all duration-300
+                 text-sm sm:text-base md:text-lg"
+    >
+      <img
+        src={img}
+        alt={label}
+        className={`w-10 h-10 sm:w-12 sm:h-12 md:w-10 md:h-10 object-contain ${lev}`}
+      />
+      {label}
+    </div>
+  ))}
+</div>
 
-                  <ul className="space-y-4">
-                    {[
-                      { img: re, label: "React", lev: "animate-levitate2" },
-                      { img: md, label: "MongoDB", lev: "animate-levitate1" },
-                      { img: fig, label: "Figma", lev: "animate-levitate2" },
-                      {
-                        img: fm,
-                        label: "Framer Motion",
-                        lev: "animate-levitate1",
-                      },
-                    ].map(({ img, label, lev }) => (
-                      <li
-                        key={label}
-                        className="icon flex items-center gap-3 md:gap-4 pb-1 font-pop text-neutral-500 font-semibold hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500 transform hover:translate-x-3 transition-all duration-300"
-                      >
-                        <img
-                          src={img}
-                          alt={label}
-                          className={`w-12 h-12 md:w-14 md:h-14 object-contain ${lev}`}
-                        />
-                        {label}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </motion.div>
             </div>
           </div>
