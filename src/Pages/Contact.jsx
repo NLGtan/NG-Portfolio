@@ -377,7 +377,7 @@ class Contact extends Component {
               animationData={arrowLottie}
               loop
               autoplay
-              className="h-6 w-6 md:h-7 md:w-7 rotate-180"
+              className="h-6 w-6 md:h-9 md:w-9 rotate-180"
             />
           </Link>
         </div>
