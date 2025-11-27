@@ -54,7 +54,7 @@ export const Home = () => {
   return (
     <FadeSection
       id="About me"
-      theme="light"
+      data-theme="light"
       className="
     full-bleed bg-white
     md:min-h-[calc(100svh-var(--nav-h))]

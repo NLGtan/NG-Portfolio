@@ -26,7 +26,7 @@ export default function Toolbox() {
   return (
     <section
       id="Toolbox"
-      theme="light"
+      data-theme="light"
       className="full-bleed bg-white text-black relative"
       style={{
         "--padY": "clamp(16rem, 6vw, 8rem)",

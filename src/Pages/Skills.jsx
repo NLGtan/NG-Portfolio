@@ -21,7 +21,7 @@ const slideRight = {
 export default function SkillsIntro() {
   return (
     <section
-      theme="dark"
+      data-theme="dark"
       className="full-bleed bg-[#171717] text-white scroll-mt-24"
       style={{
         "--padY": "clamp(16rem, 6vw, 8rem)",

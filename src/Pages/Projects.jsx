@@ -131,7 +131,7 @@ function FeaturedProject({
 export function Projects() {
   return (
     <section
-      theme="dark" // FadeSection writes data-theme for your navbar
+      data-theme="dark" // FadeSection writes data-theme for your navbar
       className="full-bleed bg-[#171717] text-white scroll-mt-24 pt-24 pb-64"
       style={{
         "--padY": "clamp(6rem, 6vw, 8rem)",
