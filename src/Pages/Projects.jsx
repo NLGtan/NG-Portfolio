@@ -7,7 +7,6 @@ import {
   useSpring,
   useReducedMotion,
 } from "framer-motion";
-import FadeSection from "../Components/FadeSection";
 import { projects } from "../data/projectsData";
 
 // entrance anim (your original)
@@ -131,7 +130,7 @@ function FeaturedProject({
 // 👇 Named export only (no default at bottom)
 export function Projects() {
   return (
-    <FadeSection
+    <section
       theme="dark" // FadeSection writes data-theme for your navbar
       className="full-bleed bg-[#171717] text-white scroll-mt-24 pt-24 pb-64"
       style={{
@@ -158,6 +157,6 @@ export function Projects() {
           ))}
         </div>
       </div>
-    </FadeSection>
+    </section>
   );
 }

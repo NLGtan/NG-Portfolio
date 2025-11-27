@@ -99,21 +99,3 @@ img,svg,video,canvas,iframe{ max-width:100%; height:auto; display:block; }
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
 }
-
-
-
-.nav {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-.nav a {
-    color: inherit;
-}
-.nav a:hover {
-    text-decoration: underline; /* Adds underline on hover */
-}
-.nav__hamburger {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
