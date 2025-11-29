@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import FadeSection from "../Components/FadeSection";
-import { Blob } from "../Components/blobs/Blob1";
-import pic from "./img/homeimg.png";
+import pic from "./img/homeimg.jpg";
+import arrow from "./img/right-arrow.png";
 
 export const Home = () => {
   const controlsText = useAnimation();
@@ -13,87 +12,81 @@ export const Home = () => {
     controlsText.start({ x: 0, opacity: 1, transition: { duration: 0.8 } });
     controlsImage.start({ x: 0, opacity: 1, transition: { duration: 0.8 } });
     controlsButton.start({ x: 0, opacity: 1, transition: { duration: 0.6 } });
-
-    const handleScroll = () => {
-      const y = window.scrollY;
-      if (y > 250) {
-        controlsText.start({
-          x: -200,
-          opacity: 0,
-          transition: { duration: 0.8 },
-        });
-        controlsImage.start({
-          x: 200,
-          opacity: 0,
-          transition: { duration: 0.8 },
-        });
-        controlsButton.start({
-          x: -100,
-          opacity: 0,
-          transition: { duration: 0.7 },
-        });
-      } else {
-        controlsText.start({ x: 0, opacity: 1, transition: { duration: 0.8 } });
-        controlsImage.start({
-          x: 0,
-          opacity: 1,
-          transition: { duration: 0.8 },
-        });
-        controlsButton.start({
-          x: 0,
-          opacity: 1,
-          transition: { duration: 0.5 },
-        });
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [controlsText, controlsImage, controlsButton]);
+  }, [controlsButton, controlsImage, controlsText]);
 
   return (
-    <FadeSection
-      id="About me"
-      data-theme="light"
+    <section
+      id="Home"
       className="
-    full-bleed bg-white
-    md:min-h-[calc(100svh-var(--nav-h))]
-    flex md:items-center
-    scroll-mt-24
-    pb-12
+    bg-[#fdfff8]
+    min-h-screen
+    flex 
+    flex-col
+    justify-start
+    items-center
+    pt-5
+    overflow-hidden
   "
     >
+      {/* === HEADER TOP === */}
+      <motion.h1
+        className="
+      font-ral font-bold text-neutral-800
+      text-5xl md:text-7xl lg:text-[9.6rem]
+      leading-tight text-center mb-6
+    "
+      >
+        <motion.span
+          className="inline-block mr-7"
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          NEITHAN
+        </motion.span>
+        <motion.span
+          className="inline-block"
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          GABORNE
+        </motion.span>
+      </motion.h1>
+
+      {/* === BOTTOM ROW: LEFT · CENTER · RIGHT === */}
       <div
         className="
-          container
-          grid md:grid-cols-2
-          gap-12 md:gap-20
-          items-center
-          place-items-center
-          md:py-0 pt-24 pb-64
-        "
+      grid 
+      md:grid-cols-3 
+      items-end
+      gap-10 md:gap-16
+      w-full max-w-[90rem]
+    "
       >
-        {/* === Text side === */}
+        {/* LEFT — DESCRIPTION + BUTTON */}
         <motion.div
           animate={controlsText}
           initial={{ x: -200, opacity: 0 }}
           className="
-            space-y-6 
-            flex flex-col justify-center 
-            items-center md:items-start 
-            text-center md:text-left 
-            max-w-xl md:max-w-2xl
-            mx-auto
-          "
+        space-y-6
+        flex flex-col 
+        items-center md:items-start
+        text-center md:text-left
+        max-w-sm mx-auto md:mx-0 mb-5
+      "
         >
-          <h1 className="font-pop font-bold text-4xl md:text-6xl lg:text-7xl">
-            Hi! I'm{" "}
-            <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
-              Neithan
-            </span>
-          </h1>
+          <div
+            className="w-7 h-7 mb-5 bg-neutral-500"
+            style={{
+              WebkitMaskImage: `url(${arrow})`,
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskSize: "contain",
+              WebkitMaskPosition: "center",
+            }}
+          ></div>
 
-          <p className="text-lg md:text-xl text-neutral-700 max-w-lg md:max-w-xl">
+          <p className="font-ral font-regular text-lg md:text-[1.3rem] text-neutral-700">
             A <span className="font-bold">passionate full stack developer</span>{" "}
             with a knack for crafting seamless, user-friendly digital
             experiences. Explore my work and see how I can bring your vision to
@@ -102,41 +95,61 @@ export const Home = () => {
 
           <motion.button
             animate={controlsButton}
-            initial={{ x: 0, opacity: 0 }}
+            initial={{ opacity: 0 }}
             className="
-              font-pop font-bold no-underline text-black 
-              border-2 border-black rounded-full 
-              px-8 py-3 text-sm md:text-base 
-              bg-transparent cursor-pointer shadow 
-              transition-all duration-500 
-              hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] 
-              hover:text-white hover:border-transparent
-            "
+          font-ral font-bold  
+          text-[#fdfff8]
+          bg-[#473d3d]
+          rounded-full 
+          px-10 py-6 
+          text-sm md:text-lg
+          hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA]
+          hover:text-white hover:border-transparent
+          transition-all duration-500
+        "
           >
-            Download CV
+            DOWNLOAD CV
           </motion.button>
         </motion.div>
 
-        {/* === Image side === */}
+        {/* CENTER — IMAGE */}
         <motion.div
           animate={controlsImage}
           initial={{ x: 200, opacity: 0 }}
-          className="relative flex justify-center items-center"
+          className="flex justify-center"
         >
           <img
             src={pic}
             alt="Portrait"
             className="
-              z-10 
-              w-[min(38vw,420px)]
-              h-auto max-w-[320px]
-              object-contain 
-              animate-levitate2
-            "
+          h-[260px] md:h-[330px] lg:h-[380px]
+          object-contain 
+          drop-shadow-2xl
+          rounded-lg
+        "
           />
-          <Blob />
+        </motion.div>
+
+        {/* RIGHT — AVAILABILITY */}
+        <motion.div
+          animate={controlsText}
+          initial={{ x: 200, opacity: 0 }}
+          className="
+        flex flex-col 
+        items-center md:items-end
+        text-center md:text-right
+        space-y-4
+        max-w-md mx-auto md:mx-0
+      "
+        >
+          <p className="font-inc font-medium text-lg md:text-base text-neutral-700">
+            AVAILABLE FOR WORK
+          </p>
+          <p className="font-ral font-bold text-lg md:text-8xl text-neutral-700">
+            NOV'18
+          </p>
         </motion.div>
       </div>
-    </FadeSection>
+    </section>
   );
 };

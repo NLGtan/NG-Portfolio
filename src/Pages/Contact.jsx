@@ -93,7 +93,7 @@ class Contact extends Component {
       <section
         data-theme="light"
         ref={this.contactRef}
-        className="w-full bg-white scroll-mt-24 pt-24"
+        className="w-full bg-[#fdfff8] scroll-mt-24 pt-24"
       >
         {/* Heading */}
         <motion.h1
@@ -190,7 +190,7 @@ class Contact extends Component {
                   placeholder="Your name"
                   required
                   autoComplete="name"
-                  className="flex-1 border-b-2 border-gray-300 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500"
+                  className="flex-1 bg-[#fdfff8] border-b-2 border-gray-300 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500"
                   aria-label="Your name"
                 />
                 <input
@@ -201,7 +201,7 @@ class Contact extends Component {
                   placeholder="Your email"
                   required
                   autoComplete="email"
-                  className="flex-1 border-b-2 border-gray-300 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500"
+                  className="flex-1 bg-[#fdfff8]  border-b-2 border-gray-300 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500"
                   aria-label="Your email"
                 />
               </motion.div>
@@ -212,7 +212,7 @@ class Contact extends Component {
                 onChange={this.handleChange}
                 placeholder="Your message"
                 required
-                className="w-full border-b-2 border-gray-300 h-36 md:h-40 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500 resize-y"
+                className="w-full bg-[#fdfff8]  border-b-2 border-gray-300 h-36 md:h-40 py-4 md:py-5 text-base md:text-lg focus:outline-none focus:border-purple-500 resize-y"
                 initial={{ opacity: 0, y: 50 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -365,7 +365,7 @@ class Contact extends Component {
           </p>
 
           <Link
-            to="About me"
+            to="Home"
             spy
             smooth
             offset={-88}

@@ -27,7 +27,7 @@ export default function Toolbox() {
     <section
       id="Toolbox"
       data-theme="light"
-      className="full-bleed bg-white text-black relative"
+      className="full-bleed bg-[#fdfff8] text-black relative"
       style={{
         "--padY": "clamp(16rem, 6vw, 8rem)",
         "--colGap": "clamp(2.5rem, 5vw, 8rem)",

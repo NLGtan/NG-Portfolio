@@ -58,7 +58,7 @@ export const Nav = () => {
   const closeMenu = () => setNavActive(false);
 
   const darkHex = "#171717";
-  const lightHex = "#FFFFFF";
+  const lightHex = "#fdfff8";
 
   const headerBG = isDarkBehind ? darkHex : lightHex;
   const linkColorClass = isDarkBehind ? "text-white" : "text-black";
@@ -68,7 +68,7 @@ export const Nav = () => {
     : "rgba(0,0,0,.12)";
   const panelTextClass = linkColorClass;
 
-  const links = ["About me", "Skills", "Projects", "Let's Talk"];
+  const links = ["Home", "Skills", "Projects", "Let's Talk"];
 
   return (
     <Fragment>
@@ -79,7 +79,7 @@ export const Nav = () => {
         animate={{ opacity: 1 }}
       >
         <motion.header
-          className="h-16 md:h-20 w-full flex justify-between items-center px-8 md:px-20"
+          className="h-16 md:h-24 w-full flex justify-between items-center px-8 md:px-[2rem]"
           initial={false}
           animate={{ backgroundColor: headerBG }}
           transition={{ duration: 0.35, ease: "easeInOut" }}
@@ -146,7 +146,7 @@ export const Nav = () => {
           {/* DESKTOP NAV (unchanged) */}
           {/* ======================== */}
           <ul
-            className={`hidden xl:flex xl:items-center xl:gap-6 xl:ml-auto font-regular text-base ${linkColorClass}`}
+            className={`hidden xl:flex xl:items-center xl:ml-auto font-regular text-lg ${linkColorClass}`}
           >
             {links.map((item) => (
               <li key={item} className="p-1 font-pop rounded-2xl">

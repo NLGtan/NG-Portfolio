@@ -6,21 +6,22 @@ import { Blob2 } from "../Components/blobs/Blob2";
 import img1 from "./img/skillimg1.png";
 
 const fadeUp = {
-  initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  initial: { y: 40 },
+  animate: { y: 0, transition: { duration: 0.6 } },
 };
 const slideLeft = {
-  initial: { opacity: 0, x: -60 },
-  animate: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  initial: { x: -60 },
+  animate: { x: 0, transition: { duration: 0.8 } },
 };
 const slideRight = {
-  initial: { opacity: 0, x: 60 },
-  animate: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  initial: { x: 60 },
+  animate: { x: 0, transition: { duration: 0.8 } },
 };
+
 
 export default function SkillsIntro() {
   return (
-    <section
+    <motion.section
       data-theme="dark"
       className="full-bleed bg-[#171717] text-white scroll-mt-24"
       style={{
@@ -37,13 +38,11 @@ export default function SkillsIntro() {
         "--blobScale": "1",
       }}
     >
-      <div className="container relative min-h-[calc(100svh-var(--nav-h))] py-[var(--padY)]">
+      <div className="container relative min-h-screen py-[var(--padY)]">
         <motion.h1
           id="Skills"
           className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-10 md:mb-16 pt-10"
           initial="initial"
-          whileInView="animate"
-          viewport={{ once: false, amount: 0.3 }}
           variants={fadeUp}
         >
           SKILLS
@@ -156,6 +155,6 @@ export default function SkillsIntro() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
