@@ -140,23 +140,25 @@ export const Home = () => {
 
         {/* Title */}
         <motion.div style={{ y, opacity }} className="w-full">
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={titleContainerVariants}
-            className="w-full text-center font-ral font-bold tracking-tight 
+          <div className="overflow-hidden">
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={titleContainerVariants}
+              className="w-full text-center font-ral font-bold tracking-tight 
              text-5xl sm:text-6xl md:text-7xl lg:text-[10.3vw] leading-tight"
-          >
-            {"NEITHAN GABORNE".split("").map((letter, index) => (
-              <motion.span
-                key={index}
-                variants={letterVariants}
-                className="inline-block overflow-hidden py-1"
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </motion.h1>
+            >
+              {"NEITHAN GABORNE".split("").map((letter, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className="inline-block py-1"
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </div>
         </motion.div>
 
         {/* Content Grid */}
