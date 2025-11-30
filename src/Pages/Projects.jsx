@@ -142,7 +142,7 @@ export function Projects() {
       <div className="container py-[var(--padY)]" style={{ maxWidth: "var(--maxW)" }}>
         <motion.h1
           id="Projects"
-          className="font-sat font-thin text-5xl md:text-7xl text-center mb-12 md:mb-16 pt-8 pb-14"
+          className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-12 md:mb-16 pt-8 pb-14"
           initial="initial"
           whileInView="animate"
           viewport={{ once: false, amount: 0.3 }}

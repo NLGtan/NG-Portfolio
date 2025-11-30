@@ -1,97 +1,96 @@
-// src/Pages/SkillsIntro.jsx
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 import { Blob2 } from "../Components/blobs/Blob2";
-
 import img1 from "./img/skillimg1.png";
 
-const fadeUp = {
-  initial: { y: 40 },
-  animate: { y: 0, transition: { duration: 0.6 } },
-};
-const slideLeft = {
-  initial: { x: -60 },
-  animate: { x: 0, transition: { duration: 0.8 } },
-};
-const slideRight = {
-  initial: { x: 60 },
-  animate: { x: 0, transition: { duration: 0.8 } },
-};
+export default function Skills() {
+  const targetRef = React.useRef(null);
+  const isInView = useInView(targetRef, { once: false, amount: 0.3 });
 
+  // Heavy scroll effect
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  });
 
-export default function SkillsIntro() {
+  const smoothScrollYProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const y = useTransform(smoothScrollYProgress, [0, 1], [0, -250]); // Adjust the -250 to make it feel heavier or lighter
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  };
+
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
   return (
-    <motion.section
-      data-theme="dark"
-      className="full-bleed bg-[#171717] text-white scroll-mt-24"
-      style={{
-        "--padY": "clamp(16rem, 6vw, 8rem)",
-        "--colGap": "clamp(2.5rem, 5vw, 8rem)",
-        "--imgMax": "340px",
-        "--imgVW": "40vw",
-        "--maxW": "1200px",
-        "--textPadL": "clamp(0rem, 4vw, 2.5rem)",
-        "--imgOffsetX": "0px",
-        "--imgOffsetY": "0px",
-        "--blobOffsetX": "0px",
-        "--blobOffsetY": "0px",
-        "--blobScale": "1",
-      }}
+    <section
+      ref={targetRef}
+      className="relative z-10 bg-[#171717] text-white rounded-t-[40px] shadow-2xl pt-[8rem]"
     >
-      <div className="container relative min-h-screen py-[var(--padY)]">
+      <motion.div   
+        id="Services"
+        style={{ y }} // Apply the heavy scroll effect here
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
+        className="container relative min-h-screen py-16"
+      >
         <motion.h1
           id="Skills"
-          className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-10 md:mb-16 pt-10"
-          initial="initial"
-          variants={fadeUp}
+          variants={itemVariants}
+          className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mt-12 mb-10 md:mb-16 pb-10"
         >
-          SKILLS
+          SERVICES
         </motion.h1>
 
         <div
           className="
             grid items-center
-            gap-10 md:gap-[var(--colGap)]
+            gap-10 md:gap-24
             md:grid-cols-2
             justify-items-center md:justify-items-start
             text-center md:text-left
-            mx-auto
+            mx-auto max-w-6xl
           "
-          style={{ maxWidth: "var(--maxW)" }}
         >
           {/* Left text */}
-          <div className="space-y-6 max-w-none lg:pl-[var(--textPadL)]">
-            <motion.h3
-              className="font-sat font-bold text-3xl md:text-4xl lg:text-5xl"
-              variants={slideLeft}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, amount: 0.3 }}
-            >
+          <motion.div variants={itemVariants} className="space-y-6">
+            <h3 className="font-sat font-bold text-3xl md:text-4xl lg:text-5xl">
               my expertise.
-            </motion.h3>
+            </h3>
 
-            <motion.p
-              className="font-sat text-base md:text-lg text-neutral-200"
-              variants={slideLeft}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, amount: 0.3 }}
-            >
+            <p className="font-sat text-base md:text-lg text-neutral-200">
               I specialize in building modern, scalable digital products across
               web, mobile, and emerging technologies. My expertise spans
               end-to-end development—from crafting intuitive UI/UX experiences
               to developing robust full-stack applications. I work with
               front-end technologies, back-end systems, mobile frameworks, and
               Web3 tools to create user-centric and high-performance solutions.
-            </motion.p>
+            </p>
 
             <motion.ul
+              variants={listVariants}
               className="font-sat font-bold text-2xl md:text-3xl space-y-3 pt-2 md:ml-10"
-              variants={slideLeft}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, amount: 0.3 }}
             >
               {[
                 "Web Development",
@@ -100,61 +99,41 @@ export default function SkillsIntro() {
                 "Full Stack Developer",
                 "UI/UX Design",
               ].map((item) => (
-                <li
+                <motion.li
                   key={item}
+                  variants={itemVariants}
                   className="font-pop text-neutral-300 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500 transform hover:translate-x-3 transition-all duration-300"
                 >
                   {item}
-                </li>
+                </motion.li>
               ))}
             </motion.ul>
-          </div>
+          </motion.div>
 
           {/* Right — image + blob */}
           <motion.div
-            className="relative flex justify-center"
-            variants={slideRight}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: false, amount: 0.3 }}
+            variants={itemVariants}
+            className="relative w-full flex justify-center md:justify-end"
           >
-            <div
-              className="
-                relative flex justify-center
-                [--imgOffsetX:0px] [--imgOffsetY:0px]
-                [--blobOffsetX:0px] [--blobOffsetY:0px] [--blobScale:1]
-                md:[--imgOffsetX:0.75rem]
-                md:[--blobOffsetY:0.5rem] md:[--blobScale:1.08]
-                lg:[--imgOffsetX:8rem] lg:[--blobOffsetY:0.75rem]
-              "
-              style={{
-                transform: `translate(var(--imgOffsetX), var(--imgOffsetY))`,
-                willChange: "transform",
-              }}
-            >
-              <img
+            <div className="relative">
+              <motion.img
                 src={img1}
                 alt="Skills visual"
-                className="
-                  z-10
-                  w-[min(50vw,var(--imgMax))]
-                  md:w-[min(var(--imgVW),var(--imgMax))]
-                  h-auto object-contain animate-levitate2
-                "
+                className="z-10 w-[340px] h-auto object-contain animate-levitate2"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={
+                  isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+                }
+                transition={{ duration: 1, ease: "easeOut" }}
               />
 
-              <div
-                className="absolute -z-10 inset-0 flex items-center justify-center pointer-events-none"
-                style={{
-                  transform: `translate(var(--blobOffsetX), var(--blobOffsetY)) scale(var(--blobScale))`,
-                }}
-              >
+              <div className="absolute -z-10 inset-0 flex items-center justify-center pointer-events-none">
                 <Blob2 />
               </div>
             </div>
           </motion.div>
         </div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }

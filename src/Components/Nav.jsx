@@ -1,276 +1,149 @@
-import React, { useEffect, useRef, useState, Fragment } from "react";
-import { Link as ScrollLink } from "react-scroll";
-import { motion } from "framer-motion";
-import logo from "./img/logo.png";
+import React, { useEffect, useState, Fragment } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import NavMenu from "./NavMenu";
 
 export const Nav = () => {
-  const navRef = useRef(null);
+  // --- CONFIGURATION ---
+  const iconSize = 60;
+  // -------------------
+
   const [navActive, setNavActive] = useState(false);
-  const [isDarkBehind, setIsDarkBehind] = useState(false);
-
-  const updateThemeFromSection = () => {
-    const nav = navRef.current;
-    if (!nav) return;
-
-    const midY = nav.getBoundingClientRect().top + nav.offsetHeight / 2;
-    const sections = document.querySelectorAll("[data-theme]");
-
-    for (const sec of sections) {
-      const r = sec.getBoundingClientRect();
-      if (r.top <= midY && r.bottom >= midY) {
-        setIsDarkBehind((sec.getAttribute("data-theme") || "light") === "dark");
-        return;
-      }
-    }
-    setIsDarkBehind(false);
-  };
-
-  const setNavHeightVar = () => {
-    const h = navRef.current?.offsetHeight || 72;
-    document.documentElement.style.setProperty("--nav-h", `${h}px`);
-  };
+  const [isHomePage, setIsHomePage] = useState(true);
+  const [invertColors, setInvertColors] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    updateThemeFromSection();
-    setNavHeightVar();
+    const updateNavState = () => {
+      const skillsSection = document.getElementById("Skills");
+      const toolboxSection = document.getElementById("Toolbox");
+      const contactSection = document.getElementById("Let's Talk");
 
-    const onScroll = () => updateThemeFromSection();
-    const onResize = () => {
-      updateThemeFromSection();
-      setNavHeightVar();
+      if (skillsSection) {
+        const skillsTop = skillsSection.getBoundingClientRect().top;
+        setIsHomePage(skillsTop > 0);
+      }
+
+      const toolboxBounds = toolboxSection
+        ? toolboxSection.getBoundingClientRect()
+        : null;
+      const contactBounds = contactSection
+        ? contactSection.getBoundingClientRect()
+        : null;
+
+      let shouldInvert = false;
+      if (
+        toolboxBounds &&
+        toolboxBounds.top < 100 &&
+        toolboxBounds.bottom > 100
+      ) {
+        shouldInvert = true;
+      }
+      if (contactBounds && contactBounds.top < 100) {
+        shouldInvert = true;
+      }
+      setInvertColors(shouldInvert);
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
+    updateNavState();
+    window.addEventListener("scroll", updateNavState, { passive: true });
+    return () => window.removeEventListener("scroll", updateNavState);
+  }, []);
 
-    const fontReady = document.fonts?.ready;
-    if (fontReady?.then) {
-      fontReady.then(setNavHeightVar).catch(() => {});
+  useEffect(() => {
+    const html = document.documentElement;
+    if (navActive) {
+      html.classList.add("body-no-scroll");
+    } else {
+      html.classList.remove("body-no-scroll");
     }
-
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
+      html.classList.remove("body-no-scroll");
+    };
+  }, [navActive]);
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") {
+        setNavActive(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
     };
   }, []);
 
   const toggleNav = () => setNavActive((v) => !v);
-  const closeMenu = () => setNavActive(false);
 
-  const darkHex = "#171717";
-  const lightHex = "#fdfff8";
-
-  const headerBG = isDarkBehind ? darkHex : lightHex;
-  const linkColorClass = isDarkBehind ? "text-white" : "text-black";
-  const panelBG = isDarkBehind ? darkHex : lightHex;
-  const panelBorder = isDarkBehind
-    ? "rgba(255,255,255,.12)"
-    : "rgba(0,0,0,.12)";
-  const panelTextClass = linkColorClass;
-
-  const links = ["Home", "Skills", "Projects", "Let's Talk"];
+  const circleSize = 15;
+  const gap = 12;
+  const dotPositions = [
+    { top: gap, left: gap }, // 0: Top-Left
+    { top: gap, left: iconSize - gap - circleSize }, // 1: Top-Right
+    { top: iconSize - gap - circleSize, left: iconSize - gap - circleSize }, // 2: Bottom-Right
+    { top: iconSize - gap - circleSize, left: gap }, // 3: Bottom-Left
+  ];
 
   return (
     <Fragment>
       <motion.div
-        ref={navRef}
-        className="fixed top-0 left-0 w-full z-50"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
+        className="fixed top-9 right-8 z-50"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{
+          scale: isHomePage ? 0 : 1,
+          opacity: isHomePage ? 0 : 1,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <motion.header
-          className="h-16 md:h-24 w-full flex justify-between items-center px-8 md:px-[2rem]"
-          initial={false}
-          animate={{ backgroundColor: headerBG }}
-          transition={{ duration: 0.35, ease: "easeInOut" }}
+        {/* Hamburger Menu Icon */}
+        <div
+          className="relative cursor-pointer"
+          style={{ width: iconSize, height: iconSize }}
+          onClick={toggleNav}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Logo */}
-          <a href="/">
-            <img
-              src={logo}
-              alt="Logo"
-              className={`w-[50px] h-[50px] mt-[10px] mb-[10px] ml-[10px] transition duration-300 ${
-                isDarkBehind ? "invert" : ""
-              }`}
-            />
-          </a>
+          <motion.div
+            className="absolute inset-0 rounded-full"
+            animate={{ backgroundColor: invertColors ? "#000000" : "#FFFFFF" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
+          {dotPositions.map((_, i) => {
+            const defaultPosition = dotPositions[i];
+            // On hover, move to the position of the previous dot in the array (counter-clockwise)
+            const hoverPosition = dotPositions[i === 0 ? 3 : i - 1];
 
-          {/* ======================== */}
-          {/* 4-CIRCLE CUBE HAMBURGER (adjustable) */}
-          {/* ======================== */}
-          <div
-            className="relative xl:hidden cursor-pointer"
-            style={{ width: 48, height: 48 }} // container size
-            onClick={toggleNav}
-          >
-            {Array(4)
-              .fill(0)
-              .map((_, i) => {
-                const circleSize = 12; // size of each circle
-                const gap = 8; // distance from edges
-
-                const positions = [
-                  { top: gap, left: gap }, // top-left
-                  { top: gap, left: 48 - gap - circleSize }, // top-right
-                  { top: 48 - gap - circleSize, left: gap }, // bottom-left
-                  { top: 48 - gap - circleSize, left: 48 - gap - circleSize }, // bottom-right
-                ];
-
-                return (
-                  <motion.div
-                    key={i}
-                    style={{
-                      width: circleSize,
-                      height: circleSize,
-                      top: positions[i].top,
-                      left: positions[i].left,
-                      position: "absolute",
-                      borderRadius: "50%",
-                    }}
-                    animate={{
-                      scale: navActive ? 0.6 : 1, // shrink on click
-                      backgroundColor: isDarkBehind ? "#FFFFFF" : "#171717", // color transition
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 25,
-                      duration: 0.3,
-                    }}
-                  />
-                );
-              })}
-          </div>
-
-          {/* ======================== */}
-          {/* DESKTOP NAV (unchanged) */}
-          {/* ======================== */}
-          <ul
-            className={`hidden xl:flex xl:items-center xl:ml-auto font-regular text-lg ${linkColorClass}`}
-          >
-            {links.map((item) => (
-              <li key={item} className="p-1 font-pop rounded-2xl">
-                <ScrollLink
-                  to={item}
-                  spy
-                  smooth
-                  offset={-88}
-                  duration={500}
-                  className={`cursor-pointer px-2 py-1 rounded-xl ${panelTextClass}
-                    transition-colors duration-300
-                    hover:bg-clip-text hover:text-transparent 
-                    hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500`}
-                >
-                  {item}
-                </ScrollLink>
-              </li>
-            ))}
-          </ul>
-
-          {/* ======================== */}
-          {/* MOBILE DROPDOWN (unchanged) */}
-          {/* ======================== */}
-          <motion.ul
-            className="
-              xl:hidden
-              absolute right-8 top-16 md:top-20
-              rounded-2xl overflow-hidden
-              font-regular text-base
-            "
-            style={{ zIndex: 60 }}
-            initial={{
-              height: 0,
-              y: -12,
-              clipPath: "inset(0% 0% 100% 0%)",
-              borderWidth: 0,
-              pointerEvents: "none",
-            }}
-            animate={
-              navActive
-                ? {
-                    height: "auto",
-                    y: 0,
-                    clipPath: "inset(0% 0% 0% 0%)",
-                    borderWidth: 1,
-                    pointerEvents: "auto",
-                    backgroundColor: panelBG,
-                    borderColor: panelBorder,
-                    color: isDarkBehind ? "#FFFFFF" : "#111111",
-                    boxShadow: isDarkBehind
-                      ? "0 20px 40px rgba(0,0,0,0)"
-                      : "0 20px 40px rgba(0,0,0,0)",
-                  }
-                : {
-                    height: 0,
-                    y: -12,
-                    clipPath: "inset(0% 0% 100% 0%)",
-                    borderWidth: 0,
-                    pointerEvents: "none",
-                    borderColor: "transparent",
-                  }
-            }
-            transition={{
-              duration: 0.38,
-              ease: [0.25, 1, 0.5, 1],
-            }}
-          >
-            <motion.div
-              className="p-4 space-y-2"
-              initial="closed"
-              animate={navActive ? "open" : "closed"}
-              variants={{
-                open: {
-                  transition: {
-                    staggerChildren: 0.06,
-                    delayChildren: 0.05,
-                  },
-                },
-                closed: {},
-              }}
-            >
-              {links.map((item) => (
-                <motion.li
-                  key={item}
-                  variants={{
-                    open: {
-                      y: 0,
-                      opacity: 1,
-                      filter: "blur(0px)",
-                      transition: { ease: [0.25, 1, 0.5, 1], duration: 0.32 },
-                    },
-                    closed: {
-                      y: -8,
-                      opacity: 0,
-                      filter: "blur(4px)",
-                      transition: { duration: 0.15 },
-                    },
-                  }}
-                  className={`font-pop rounded-xl list-none ${panelTextClass}`}
-                >
-                  <ScrollLink
-                    to={item}
-                    spy
-                    smooth
-                    offset={-88}
-                    duration={500}
-                    onClick={closeMenu}
-                    className={`
-                      cursor-pointer block px-3 py-2 rounded-xl ${panelTextClass}
-                      transition-all duration-300
-                      hover:bg-clip-text hover:text-transparent 
-                      hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500
-                    `}
-                  >
-                    {item}
-                  </ScrollLink>
-                </motion.li>
-              ))}
-            </motion.div>
-          </motion.ul>
-        </motion.header>
+            return (
+              <motion.div
+                key={i}
+                style={{
+                  width: circleSize,
+                  height: circleSize,
+                  position: "absolute",
+                  borderRadius: "50%",
+                }}
+                animate={{
+                  top: isHovered ? hoverPosition.top : defaultPosition.top,
+                  left: isHovered ? hoverPosition.left : defaultPosition.left,
+                  scale: navActive ? 0.6 : 1,
+                  backgroundColor: invertColors ? "#FFFFFF" : "#000000",
+                }}
+                transition={{
+                  top: { type: "spring", stiffness: 300, damping: 20 },
+                  left: { type: "spring", stiffness: 300, damping: 20 },
+                  scale: { type: "spring", stiffness: 400, damping: 25 },
+                  backgroundColor: { duration: 0.3, ease: "easeInOut" },
+                }}
+              />
+            );
+          })}
+        </div>
       </motion.div>
 
-      <div className="h-16 md:h-20" aria-hidden />
+      {/* Full-screen Navigation Menu */}
+      <AnimatePresence>
+        {navActive && <NavMenu setNavActive={setNavActive} />}
+      </AnimatePresence>
     </Fragment>
   );
 };
