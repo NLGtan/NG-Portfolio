@@ -160,7 +160,8 @@ export const Home = () => {
               initial="hidden"
               animate="visible"
               variants={titleContainerVariants}
-              className="w-full text-left md:text-center font-ral font-bold tracking-tight mt-[6rem] 
+              className="w-full text-left md:text-center font-ral font-bold tracking-tight 
+             xs:mt-[9rem] 1xs:mt-[8rem] sm:mt-[6rem] md:mt-[6rem] lg:mt-[6rem] xl:mt-[6rem] 2xl:mt-[6rem] 
              md:mb-5 lg:mb-5 xl:mb-5 2xl:mb-5
              text-[11vw] md:text-[9.9vw] lg:text-[10.1vw] xl:text-[10.2vw] 2xl:text-[10.3vw]
              leading-tight md:leading-none md:whitespace-nowrap"
