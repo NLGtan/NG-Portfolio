@@ -119,7 +119,7 @@ export default function Skills() {
               <motion.img
                 src={img1}
                 alt="Skills visual"
-                className="z-10 w-[340px] h-auto object-contain animate-levitate2"
+                className="z-10 w-[15rem] md:w-[340px] h-auto object-contain animate-levitate2"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={
                   isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
