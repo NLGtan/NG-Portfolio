@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"], // ensure all React files are included
   theme: {
     extend: {
+      screens: {
+        '1xs': '440px',
+        'xs': '360px',  
+      },
       fontFamily: {
         sat: ["Satoshi", "sans-serif"],
         pop: ["Poppins", "sans-serif"],

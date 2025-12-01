@@ -198,7 +198,8 @@ export const Home = () => {
           <motion.div
             style={{ y, opacity }}
             className="space-y-6 flex flex-col items-start text-left 
-                max-w-[40vw]
+    xs:max-w-[50vw]
+    1xs:max-w-[50vw]
     sm:max-w-[40vw]    
     md:max-w-[50vw]
     lg:max-w-[40vw]
@@ -225,7 +226,7 @@ export const Home = () => {
                 animate="visible"
                 custom={0}
                 variants={slideUpVariants}
-                className="font-ral font-regular text-lg text-[0.8rem] sm:text-[1rem] md:text-[0.9rem] lg:text-[1.1rem] xl:text-[1.3rem] 2xl:text-[1.5rem] text-neutral-700"
+                className="font-ral font-regular text-lg xs:text-[0.7rem] 1xs:text-[0.8rem] sm:text-[1rem] md:text-[0.9rem] lg:text-[1.1rem] xl:text-[1.3rem] 2xl:text-[1.5rem] text-neutral-700"
               >
                 A{" "}
                 <span className="font-bold">
