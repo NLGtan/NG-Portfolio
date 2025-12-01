@@ -5,6 +5,11 @@ import pic from "./img/homeimg.jpg";
 import arrow from "./img/right-arrow.png";
 import logo from "../Components/img/logo.png";
 import Intro from "../Components/Intro";
+import Tooltip from "../Components/resumeTooltip";
+import AnimatedButton from "../Components/resumeButton";
+import LetsTalkButton from "../Components/LetsTalkButton";
+
+
 
 export const Home = () => {
   const main = React.useRef(null);
@@ -131,22 +136,29 @@ export const Home = () => {
               {" "}
               {links.map((item) => (
                 <li key={item.label}>
-                  {" "}
-                  <ScrollLink
-                    to={item.to}
-                    spy
-                    smooth
-                    offset={-88}
-                    duration={500}
-                    className={
-                      item.label === "Let's Talk."
-                        ? `cursor-pointer px-4 py-2 rounded-full bg-neutral-800 text-white border border-neutral-800 transition-all duration-300 hover:bg-white hover:text-black shadow-md hover:shadow-xl`
-                        : `cursor-pointer px-2 py-1 rounded-xl text-black transition-colors duration-300 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500`
-                    }
-                  >
-                    {" "}
-                    {item.label}{" "}
-                  </ScrollLink>{" "}
+                                    {item.label === "Let's Talk." ? (
+                    <ScrollLink
+                      to={item.to}
+                      spy
+                      smooth
+                      offset={-88}
+                      duration={500}
+                      className="cursor-pointer"
+                    >
+                      <LetsTalkButton>{item.label}</LetsTalkButton>
+                    </ScrollLink>
+                  ) : (
+                    <ScrollLink
+                      to={item.to}
+                      spy
+                      smooth
+                      offset={-88}
+                      duration={500}
+                      className="cursor-pointer px-2 py-1 rounded-xl text-black transition-colors duration-300 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500"
+                    >
+                      {item.label}
+                    </ScrollLink>
+                  )}
                 </li>
               ))}{" "}
             </ul>{" "}
@@ -238,29 +250,26 @@ export const Home = () => {
                 to life.
               </motion.p>
             </div>
-            <div className="overflow-hidden">
+            <div>
+            <Tooltip content="View Resume">
               <a href="/resume.html" target="_blank" rel="noopener noreferrer">
                 <motion.button
                   initial="hidden"
                   animate="visible"
                   custom={1}
                   variants={slideUpVariants}
-                  className="
-      font-ral font-bold 
-      text-[#fdfff8] 
-      bg-[#473d3d] 
-      rounded-full
-      px-6 sm:px-8 md:px-8 lg:px-10 xl:px-7 2xl:px-[2.3rem]
-      py-3 sm:py-4 md:py-5 lg:py-6 xl:py-4 2xl:py-[1.5rem]
-      text-xs sm:text-sm md:text-[0.7rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.1rem]
-      hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA]
-      hover:text-white hover:border-transparent
-      transition-colors duration-500
-    "
+                >
+                <AnimatedButton
+                  as="a"
+                  href="/resume.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   RESUME
+                </AnimatedButton>
                 </motion.button>
               </a>
+              </Tooltip>
             </div>
           </motion.div>
 

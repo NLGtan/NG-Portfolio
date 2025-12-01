@@ -1,6 +1,8 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NavMenu from "./NavMenu";
+import Tooltip from "../Components/menuTooltip";
+
 
 export const Nav = () => {
   // --- CONFIGURATION ---
@@ -95,7 +97,10 @@ export const Nav = () => {
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        {/* Hamburger Menu Icon */}
+
+
+        {/*Hamburger Menu Icon */}
+        <Tooltip content={navActive ? "Close" : "Menu"}>
         <div
           className="relative cursor-pointer"
           style={{ width: iconSize, height: iconSize }}
@@ -138,6 +143,7 @@ export const Nav = () => {
             );
           })}
         </div>
+        </Tooltip>
       </motion.div>
 
       {/* Full-screen Navigation Menu */}
