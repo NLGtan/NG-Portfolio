@@ -171,7 +171,7 @@ export const Home = () => {
                   key={wIndex}
                   className={`block md:inline-block ${
                     wIndex === 1 ? "-mt-[2vw] md:mt-0" : ""
-                  } leading-[0.9] md:leading-none`}
+                  } leading-[1] md:leading-none`}
                 >
                   {/* Desktop-only space BEFORE the 2nd word */}
                   {wIndex === 1 && (
