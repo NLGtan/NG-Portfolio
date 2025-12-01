@@ -12,7 +12,7 @@ export const projects = [
     live: "",
     repo: "https://github.com/NLGtan/kilowhatt_app",
     description:
-      "A Flutter mobile app connecting homeowners and tenants. Features include role-based dashboards, real-time bill tracking, OCR-based meter reading, push notifications, and Supabase image uploads for seamless property management.",
+      "A Flutter mobile app connecting homeowners and tenants. It includes role-based dashboards, real-time bill tracking, OCR-based submeter reading, push notifications, and Supabase image uploads. The app also integrates a blockchain payment method to ensure secure, immutable bill records.",
     stack: ["Flutter", "Firebase", "Supabase"],
     flip: false,
   },
