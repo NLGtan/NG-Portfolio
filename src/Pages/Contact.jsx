@@ -225,41 +225,25 @@ class Contact extends Component {
               <motion.button
                 type="submit"
                 disabled={sending}
+                className={`mt-2 flex items-center justify-center
+                  mx-auto md:mx-0
+                  w-fit md:w-auto
+                  px-6 md:px-10 py-3 md:py-3.5
+                  text-sm md:text-base
+                  font-sat font-medium text-black border-2 border-black rounded-full
+                  bg-transparent shadow transition-all duration-500
+                  ${
+                    sending
+                      ? "opacity-70 cursor-not-allowed"
+                      : "cursor-pointer hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] hover:text-white hover:border-transparent"
+                  }`}
                 initial={{ opacity: 0, y: 50 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
                 }
                 transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6 }}
-                whileHover="hover"
-                className={`group relative overflow-hidden mt-2 flex items-center justify-center
-      mx-auto md:mx-0
-      w-fit md:w-auto
-      px-6 md:px-10 py-3 md:py-3.5
-      text-sm md:text-base
-      font-sat font-medium text-black border-2 border-black rounded-full
-      bg-transparent shadow transition-colors duration-300 ease-in-out
-      ${
-        sending
-          ? "opacity-70 cursor-not-allowed"
-          : "cursor-pointer hover:border-transparent"
-      }`}
               >
-                {/* Text stays on top and changes color */}
-                <span className="relative z-10 transition-colors duration-300 ease-in-out group-hover:text-white">
-                  {sending ? "Sending…" : "Send Message"}
-                </span>
-
-                {/* The semicircular animated background */}
-                <motion.div
-                  className="absolute inset-0 z-0 bg-gradient-to-r from-[#ED738F] to-[#AB45CA]"
-                  initial={{ clipPath: "circle(0% at 50% 100%)" }}
-                  variants={{
-                    hover: {
-                      clipPath: "circle(150% at 50% 100%)",
-                    },
-                  }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                />
+                {sending ? "Sending…" : "Send Message"}
               </motion.button>
             </form>
           </div>
