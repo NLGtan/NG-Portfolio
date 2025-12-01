@@ -239,26 +239,28 @@ export const Home = () => {
               </motion.p>
             </div>
             <div className="overflow-hidden">
-              <motion.button
-                initial="hidden"
-                animate="visible"
-                custom={1}
-                variants={slideUpVariants}
-                className="
-    font-ral font-bold 
-    text-[#fdfff8] 
-    bg-[#473d3d] 
-    rounded-full
-    px-6 sm:px-8 md:px-8 lg:px-10 xl:px-7 2xl:px-[2.3rem]
-    py-3 sm:py-4 md:py-5 lg:py-6 xl:py-4 2xl:py-[1.5rem]
-    text-xs sm:text-sm md:text-[0.7rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.1rem]
-    hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA]
-    hover:text-white hover:border-transparent
-    transition-colors duration-500
-  "
-              >
-                DOWNLOAD CV
-              </motion.button>
+              <a href="/resume.html" target="_blank" rel="noopener noreferrer">
+                <motion.button
+                  initial="hidden"
+                  animate="visible"
+                  custom={1}
+                  variants={slideUpVariants}
+                  className="
+      font-ral font-bold 
+      text-[#fdfff8] 
+      bg-[#473d3d] 
+      rounded-full
+      px-6 sm:px-8 md:px-8 lg:px-10 xl:px-7 2xl:px-[2.3rem]
+      py-3 sm:py-4 md:py-5 lg:py-6 xl:py-4 2xl:py-[1.5rem]
+      text-xs sm:text-sm md:text-[0.7rem] lg:text-[0.9rem] xl:text-[1rem] 2xl:text-[1.1rem]
+      hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA]
+      hover:text-white hover:border-transparent
+      transition-colors duration-500
+    "
+                >
+                  RESUME
+                </motion.button>
+              </a>
             </div>
           </motion.div>
 
