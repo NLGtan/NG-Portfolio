@@ -40,9 +40,9 @@ export const Home = () => {
 
   const links = [
     { label: "services", to: "Services" },
-    { label: "projects", to: "Projects" },
-    { label: "about", to: "About" },
-    { label: "Let's Talk.", to: "Let's Talk" },
+    { label: "projects", to: "Projects1" },
+    { label: "about", to: "About1" },
+    { label: "Let's Talk.", to: "Let's Talk1" },
   ];
 
   // Intro animations

@@ -139,9 +139,10 @@ export function Projects() {
         "--rowGap": "clamp(8rem, 4vw, 8rem)",
       }}
     >
+      <div id="Projects"></div>
       <div className="container py-[var(--padY)]" style={{ maxWidth: "var(--maxW)" }}>
         <motion.h1
-          id="Projects"
+          id="Projects1"
           className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-12 md:mb-16 pt-8 pb-14"
           initial="initial"
           whileInView="animate"

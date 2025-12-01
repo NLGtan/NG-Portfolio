@@ -96,8 +96,9 @@ class Contact extends Component {
         className="w-full bg-[#fdfff8] scroll-mt-24 pt-24"
       >
         {/* Heading */}
+        <div id="Let's Talk"></div>
         <motion.h1
-          id="Let's Talk"
+          id="Let's Talk1"
           className="font-sat font-thin lg:text-8xl text-[clamp(2.25rem,6vw,4.5rem)] text-center pt-12 md:pt-16 pb-6 md:pb-10"
           initial={{ opacity: 0, y: 100 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
