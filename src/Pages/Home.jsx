@@ -145,7 +145,7 @@ export const Home = () => {
               initial="hidden"
               animate="visible"
               variants={titleContainerVariants}
-              className="w-full text-center font-ral font-bold tracking-tight 
+              className="w-full text-center font-ral font-bold tracking-tight xl:mb-0 2xl:mb-7
              text-5xl sm:text-6xl md:text-7xl lg:text-[10.3vw] leading-tight"
             >
               {"NEITHAN GABORNE".split("").map((letter, index) => (
