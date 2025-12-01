@@ -70,27 +70,60 @@ const NavMenu = ({ setNavActive }) => {
             <p className="font-bold uppercase text-gray-400">Email Address</p>
             <a
               href="mailto:gaborne.neithanlouisn@gmail.com"
-              className="font-inc text-base hover:text-gray-400 transition-colors duration-200"
+              className="font-inc text-base 
+           transition-all duration-300 
+           hover:bg-gradient-to-r hover:from-[#ED738F] hover:to-[#AB45CA] 
+           hover:text-white hover:px-3 hover:py-1 hover:rounded-full"
             >
               gaborne.neithanlouisn@gmail.com
             </a>
           </div>
           <div className="font-inc">
             <a
-              href="/"
-              className="mr-4 hover:text-gray-400 transition-colors duration-200"
+              href="https://www.linkedin.com/"
+              className="
+  mr-4 
+  text-white
+  relative 
+  transition-all duration-300 
+  after:content-[''] after:absolute after:left-0 after:-bottom-1
+  after:w-0 after:h-[2px]
+  after:bg-gradient-to-r after:from-[#ED738F] after:to-[#AB45CA]
+  after:transition-all after:duration-300
+  hover:after:w-full
+"
             >
               LinkedIn
             </a>
             <a
-              href="/"
-              className="mr-4 hover:text-gray-400 transition-colors duration-200"
+              href="https://github.com/NLGtan"
+              className="
+  mr-4 
+  text-white
+  relative 
+  transition-all duration-300 
+  after:content-[''] after:absolute after:left-0 after:-bottom-1
+  after:w-0 after:h-[2px]
+  after:bg-gradient-to-r after:from-[#ED738F] after:to-[#AB45CA]
+  after:transition-all after:duration-300
+  hover:after:w-full
+"
             >
               Github
             </a>
             <a
-              href="/"
-              className="hover:text-gray-400 transition-colors duration-200"
+              href="https://www.instagram.com/_neyyt/"
+              className="
+  mr-4 
+  text-white
+  relative 
+  transition-all duration-300 
+  after:content-[''] after:absolute after:left-0 after:-bottom-1
+  after:w-0 after:h-[2px]
+  after:bg-gradient-to-r after:from-[#ED738F] after:to-[#AB45CA]
+  after:transition-all after:duration-300
+  hover:after:w-full
+"
             >
               Instagram
             </a>
