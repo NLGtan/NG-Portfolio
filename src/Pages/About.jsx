@@ -42,25 +42,25 @@ const About = () => {
     <section
       id="About"
       ref={targetRef}
-      className="relative bg-[#171717] text-white py-20 pb-64"
+      className="relative bg-[#171717] text-white py-16 sm:py-20 md:py-28"
     >
       <motion.div
         id="About1"
-        className="container mx-auto px-4 sm:px-6 lg:px-0"
+        className="container mx-auto px-4 sm:px-6 lg:px-8"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
       >
         <motion.h1
           variants={itemVariants}
-          className="font-sat font-thin text-5xl md:text-7xl lg:text-8xl text-center mb-10 md:mb-16 pt-10 pb-10"
+          className="font-sat font-thin text-4xl sm:text-5xl md:text-7xl text-center mb-10 md:mb-16 pt-8 sm:pt-10 pb-8 sm:pb-14"
         >
           ABOUT ME
         </motion.h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-32 items-center">
           <motion.div
             variants={imageVariants}
-            className="w-[24rem] h-auto"
+            className="h-[30rem] max-w-sm mx-auto md:max-w-none md:w-auto"
           >
             <img
               src={pic}
@@ -71,17 +71,17 @@ const About = () => {
 
           <motion.div
             variants={textVariants}
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-center text-left"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-2xl font-semibold font-sat leading-tight mb-8">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-sat leading-tight mb-6 sm:mb-8">
               I'm a Full Stack Developer driven by a passion for turning ideas into
               clean, intuitive digital experiences.
             </h1>
-            <div className="grid grid-cols-[max-content_1fr] gap-x-8 items-start">
-              <h2 className="font-inc text-sm font-semibold tracking-widest uppercase text-gray-400">
+            <div className="flex flex-col items-start">
+              <h2 className="font-inc text-sm font-semibold tracking-widest uppercase text-gray-400 mb-4">
                 (ABOUT ME)
               </h2>
-              <p className="text-base sm:text-lg text-gray-300 leading-loose">
+              <p className="text-base sm:text-lg text-gray-300 leading-loose max-w-prose">
                 I am a passionate Full Stack Developer with a knack for building
                 full-stack web applications using modern technologies like
                 Next.js and Tailwind CSS. My journey in tech began with a
