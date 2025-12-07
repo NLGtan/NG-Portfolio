@@ -29,11 +29,11 @@ export const projects = [
     flip: true,
   },
   {
-    title: "Zentry",
-    year: "2023",
+    title: "Axari",
+    year: "2025",
     role: "Web Design • Frontend",
     img: pro3,
-    live: "https://zentry.com/",
+    live: "https://axari.vercel.app/",
     repo: "",
     description:
       "A marketing site recreation focusing on motion, layered visuals, and responsive typography. Emphasizes modern frontend techniques and interactive UI design.",
