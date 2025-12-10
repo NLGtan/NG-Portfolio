@@ -175,7 +175,7 @@ export const Home = () => {
               className="w-full text-left md:text-center font-ral font-bold tracking-tight 
              xs:mt-[10rem] 1xs:mt-[8rem] sm:mt-[6rem] md:mt-[6rem] lg:mt-[6rem] xl:mt-[6rem] 2xl:mt-[6rem] 
              md:mb-5 lg:mb-5 xl:mb-5 2xl:mb-5
-             text-[11vw] md:text-[9.9vw] lg:text-[10.1vw] xl:text-[10.2vw] 2xl:text-[10.3vw]
+             text-[11vw] md:text-[9.9vw] lg:text-[10.1vw] xl:text-[10.2vw] 2xl:text-[10.3vw] 3xl:text-[10.3vw]
              leading-tight md:leading-none md:whitespace-nowrap"
             >
               {["NEITHAN", "GABORNE"].map((word, wIndex) => (
@@ -206,7 +206,7 @@ export const Home = () => {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid md:grid-cols-3 items-end gap-10 md:gap-16 w-full max-w-[90rem]">
+        <div className="grid md:grid-cols-3 items-end gap-10 md:gap-16 w-full max-w-[90rem] 4xl:max-w-[112rem]">
           {/* Left Column */}
           <motion.div
             style={{ y, opacity }}
@@ -218,7 +218,8 @@ export const Home = () => {
     lg:max-w-[40vw]
     xl:max-w-[32vw]
     2xl:max-w-[60vw] 
-    md:mx-[3vw] lg:mx-[3vw] xl:mx-10 2xl:mx-0 xl:mb-6 2xl:mb-5"
+    md:mx-[3vw] lg:mx-[3vw] xl:mx-10 2xl:mx-0 3xl:mx-12 4xl:mx-0 
+    xl:mb-6 2xl:mb-5 3xl:mb-20"
           >
             <motion.div
               initial="hidden"
@@ -288,7 +289,7 @@ export const Home = () => {
                 variants={imageVariants}
                 src={pic}
                 alt="Portrait"
-                className="h-[100px] md:h-[330px] xl:h-[300px] 2xl:h-[380px]
+                className="h-[100px] md:h-[330px] xl:h-[300px] 2xl:h-[380px] 3xl:h-[400px] 4xl:h-[600px]
                 xl:mb-[60px] 2xl:mb-[0px]  
                 object-contain drop-shadow-lg rounded-lg "
               />
@@ -302,10 +303,10 @@ export const Home = () => {
     flex flex-col items-end text-right space-y-4
     ml-auto mr-2 sm:mr-4 mx-0
     -mt-[8rem] sm:-mt-[9rem] md:mt-0
-    max-w-[90%] sm:max-w-sm md:max-w-md 
+    max-w-[90%] sm:max-w-sm md:max-w-md xl:max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl 4xl:max-w-4xl
     md:mx-[2rem] lg:mx-[2rem] xl:mx-[3rem] 2xl:mx-0
     self-start md:self-end
-    xl:mb-6 2xl:mb-0
+    xl:mb-6 2xl:mb-0 3xl:mb-12
   "
           >
             <div className="overflow-hidden">

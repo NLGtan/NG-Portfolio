@@ -5,7 +5,9 @@ module.exports = {
     extend: {
       screens: {
         '1xs': '440px',
-        'xs': '360px',  
+        'xs': '360px',
+        '3xl': '1440px',
+        '4xl': '1920px',  
       },
       fontFamily: {
         sat: ["Satoshi", "sans-serif"],
