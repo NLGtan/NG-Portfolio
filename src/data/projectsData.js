@@ -36,7 +36,7 @@ export const projects = [
     live: "https://axari.vercel.app/",
     repo: "",
     description:
-      "A marketing site recreation focusing on motion, layered visuals, and responsive typography. Emphasizes modern frontend techniques and interactive UI design.",
+      "A marketing‑site reimagined for the web with a Web3 focus. It blends motion, layered visuals, and responsive typography to create an immersive, modern frontend experience. Animated transitions and visual layers reinforce a sense of depth and polish, while interactive elements highlight blockchain and Web3 integration concepts. Text and layout adapt fluidly to any screen size, ensuring readability and elegance across devices. In essence: a sleek, interactive showcase built with modern frontend craftsmanship, refined UI design, and Web3-inspired interactivity.",
     stack: ["React", "Tailwind", "Framer Motion"],
     flip: false,
   },
